@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('gps_location');
             $table->double('lowest_price')->default(0);
             $table->double('discount_price')->default(0);
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
 
         });

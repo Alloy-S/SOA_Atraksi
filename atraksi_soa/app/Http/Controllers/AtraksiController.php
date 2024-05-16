@@ -37,14 +37,14 @@ class AtraksiController extends Controller
     public function store(StoreAtraksiRequest $request)
     {
         $validatedData = $request->validate([
-            'title' => '',
-            'slug' => '',
-            'deskripsi' => '',
-            'info_penting' => '',
-            'highlight' => '',
-            'provinsi' => '',
-            'kota' => '',
-            'gps_location' => '',
+            'title' => 'required|max:255',
+            'slug' => 'required',
+            'deskripsi' => 'required',
+            'info_penting' => 'required',
+            'highlight' => 'required',
+            'provinsi' => 'required',
+            'kota' => 'required',
+            'gps_location' => 'required',
         ]);
 
         Atraksi::create($validatedData);
@@ -64,7 +64,11 @@ class AtraksiController extends Controller
      */
     public function edit(Atraksi $atraksi)
     {
-        //
+        return view('atraksi.edit', [
+            'atraksi' => $atraksi,
+            "provinsi" => DB::table('tbl_provinsi')->get(),
+            "kota" => DB::table('tbl_kabkot')->get(),
+        ]);
     }
 
     /**
@@ -72,7 +76,19 @@ class AtraksiController extends Controller
      */
     public function update(UpdateAtraksiRequest $request, Atraksi $atraksi)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required',
+            'deskripsi' => 'required',
+            'info_penting' => 'required',
+            'highlight' => 'required',
+            'provinsi' => 'required',
+            'kota' => 'required',
+            'gps_location' => 'required',
+        ]);
+
+        Atraksi::where('id', $atraksi->id)->update($validatedData);
+        return redirect('/atraksi')->with('success', 'data successfuly updated!');
     }
 
     /**
@@ -80,7 +96,8 @@ class AtraksiController extends Controller
      */
     public function destroy(Atraksi $atraksi)
     {
-        //
+        Atraksi::destroy($atraksi->id);
+        return redirect()->back()->with('success', 'Atraksi has been Deleted!');
     }
 
     public function checkSlug(Request $request) {

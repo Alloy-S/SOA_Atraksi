@@ -113,9 +113,9 @@
             display: block !important;
         }
 
-        /* .text-editor {
-            height: 200px;
-        } */
+        .main {
+            min-height: 100vh;
+        }
     </style>
     {{-- bootstrap icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -266,7 +266,7 @@
         <div class="row">
             @include('partials.sidebar')
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main">
                 @yield('container')
             </main>
         </div>

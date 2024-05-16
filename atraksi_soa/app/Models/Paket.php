@@ -13,12 +13,14 @@ class Paket extends Model
         'id'
     ];
 
+    // protected $with = ['atraksi', 'type'];
+
     public function Atraksi() {
         return $this->belongsTo(Atraksi::class);
     }
 
     public function Type() {
-        return $this->hasOne(Type::class);
+        return $this->belongsTo(Type::class);
     }
 
 }

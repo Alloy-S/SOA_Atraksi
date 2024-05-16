@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('pakets', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('atraksi_id');
+            $table->foreignId('type_id');
+            $table->string('title');
+            $table->text('deskripsi');
+            $table->text('fasilitas');
+            $table->text('cara_penukaran');
+            $table->text('syarat_dan_ketentuan');
+            $table->double('harga');
+            $table->double('harga_discount');
+            $table->integer('masa_berlaku');
+            $table->boolean('is_refundable');
             $table->timestamps();
         });
     }

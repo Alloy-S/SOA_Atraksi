@@ -13,6 +13,11 @@ class Photo extends Model
         'id'
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'id';
+    }
+
     public function Atraksi() {
         return $this->belongsTo(Atraksi::class);
     }

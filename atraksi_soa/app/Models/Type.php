@@ -14,6 +14,6 @@ class Type extends Model
     ];
 
     public function Paket() {
-        return $this->belongsTo(Paket::class);
+        return $this->hasMany(Paket::class);
     }
 }
