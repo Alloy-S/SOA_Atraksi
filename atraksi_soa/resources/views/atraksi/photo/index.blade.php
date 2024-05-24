@@ -1,6 +1,8 @@
 @extends('dashboard')
 @section('container')
-
+    <div class="mt-4">
+        <a class="btn btn-danger" href="/atraksi">Back</a>
+    </div>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Create New Atraksi</h1>
     </div>
@@ -46,7 +48,8 @@
                     <td>{{ $item->placeholder }}</td>
                     <td><img class="img-preview img-fluid" src="{{ url($item->image) }}" style="max-width: 300px"></td>
                     <td>
-                        <form action="/atraksi/{{ $atraksi->slug }}/image/{{ $item->id }}" method="post" class="d-inline">
+                        <form action="/atraksi/{{ $atraksi->slug }}/image/{{ $item->id }}" method="post"
+                            class="d-inline">
                             @method('delete')
                             @csrf
                             <button href="" class="badge bg-danger border-0"

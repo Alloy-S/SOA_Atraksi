@@ -1,5 +1,8 @@
 @extends('dashboard')
 @section('container')
+    <div class="mt-4">
+        <a class="btn btn-danger" href="/atraksi">Back</a>
+    </div>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Create New Atraksi</h1>
     </div>
@@ -67,10 +70,11 @@
                 </p>
             @enderror
             <select class="form-select" aria-label="Default select example" name="provinsi" id="provinsi">
-                <option value="" selected>Pilih Provinsi</option>
-                @foreach ($provinsi as $item)
-                    <option value="{{ $item->id }}">{{ $item->provinsi }}</option>
-                @endforeach
+                {{-- <option value="" selected>Pilih Provinsi</option> --}}
+                {{-- @foreach ($provinsi->provinsi as $item)
+
+                    <option value="{{ $item->province_id }}">{{ $item->province }}</option>
+                @endforeach --}}
             </select>
         </div>
         <div class="mb-3">
@@ -107,6 +111,23 @@
 
             const title = document.querySelector('#title');
             const slug = document.querySelector('#slug');
+            $('#provinsi').attr('disabled', true);
+            $('#kota').attr('disabled', true);
+
+            $.ajax({
+                url: '/provinsi',
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    $('#provinsi').empty();
+                    $('#provinsi').append('<option value="">Pilih Provinsi</option>');
+                    $.each(data.provinsi, function(key, value) {
+                        $('#provinsi').append('<option value="' + value.province_id + '">' +
+                            value.province + '</option>');
+                    });
+                    $('#provinsi').attr('disabled', false);
+                }
+            });
 
 
             title.addEventListener('change', function() {
@@ -124,12 +145,14 @@
                     url: '/cities/' + provinsiId,
                     dataType: 'json',
                     success: function(data) {
+                        console.log(data);
                         $('#kota').empty();
                         $('#kota').append('<option value="">Pilih Kota</option>');
-                        $.each(data, function(key, value) {
-                            $('#kota').append('<option value="' + value.id + '">' +
-                                value.kabupaten_kota + '</option>');
+                        $.each(data.cities, function(key, value) {
+                            $('#kota').append('<option value="' + value.city_id + '">' +
+                                value.type + ' ' + value.city_name + '</option>');
                         });
+                        $('#kota').attr('disabled', false);
                     }
                 });
             })

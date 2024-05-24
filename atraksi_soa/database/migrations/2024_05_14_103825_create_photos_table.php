@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("image");
             $table->string('placeholder');
             $table->timestamps();
+            $table->foreign('atraksi_id')->references('id')->on('atraksis')->onDelete('cascade');
         });
     }
 

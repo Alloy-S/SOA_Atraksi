@@ -1,5 +1,8 @@
 @extends('dashboard')
 @section('container')
+    <div class="mt-4">
+        <a class="btn btn-danger" href="/">Back</a>
+    </div>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Atraksi</h1>
     </div>
@@ -56,7 +59,13 @@
                         </td>
 
                         <td>
-                            <a href="#" class="btn btn-primary">Publish</a>
+                            <form action="/atraksi/publish" method="post">
+                                @csrf
+
+                                <input type="text" name="slug" value="{{ $item->slug }}" hidden>
+                                <button type="submit" class="btn btn-primary">Publish</button>
+                            </form>
+                            {{-- <a href="#" class="btn btn-primary">Publish</a> --}}
                         </td>
                     </tr>
                 @endforeach

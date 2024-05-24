@@ -1,5 +1,6 @@
 @extends('dashboard')
 @section('container')
+
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Create New Atraksi</h1>
     </div>
@@ -69,11 +70,11 @@
             @enderror
             <select class="form-select" aria-label="Default select example" name="provinsi" id="provinsi">
                 <option value="" selected>Pilih Provinsi</option>
-                @foreach ($provinsi as $item)
-                    @if ($item->id == $atraksi->provinsi)
-                        <option value="{{ $item->id }}" selected>{{ $item->provinsi }}</option>
+                @foreach ($provinsi->provinsi as $item)
+                    @if ($item->province_id == $atraksi->provinsi)
+                        <option value="{{ $item->province_id }}" selected>{{ $item->province }}</option>
                     @else
-                        <option value="{{ $item->id }}">{{ $item->provinsi }}</option>
+                        <option value="{{ $item->province_id }}">{{ $item->province }}</option>
                     @endif
                 @endforeach
             </select>
@@ -86,11 +87,11 @@
                 </p>
             @enderror
             <select class="form-select kota" aria-label="Default select example" name="kota" id="kota">
-                @foreach ($kota as $item)
-                    @if ($item->id == $atraksi->kota)
-                        <option value="{{ $item->id }}" selected>{{ $item->kabupaten_kota }}</option>
+                @foreach ($kota->cities as $item)
+                    @if ($item->city_id == $atraksi->kota)
+                        <option value="{{ $item->city_id }}" selected>{{ $item->type }} {{ $item->city_name }}</option>
                     @else
-                        <option value="{{ $item->id }}">{{ $item->kabupaten_kota }}</option>
+                        <option value="{{ $item->city_id }}">{{ $item->type }} {{ $item->city_name }}</option>
                     @endif
                 @endforeach
             </select>
@@ -110,7 +111,7 @@
 
 
 
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </form>
 
@@ -136,11 +137,12 @@
                     url: '/cities/' + provinsiId,
                     dataType: 'json',
                     success: function(data) {
+                        console.log(data);
                         $('#kota').empty();
                         $('#kota').append('<option value="">Pilih Kota</option>');
-                        $.each(data, function(key, value) {
-                            $('#kota').append('<option value="' + value.id + '">' +
-                                value.kabupaten_kota + '</option>');
+                        $.each(data.cities, function(key, value) {
+                            $('#kota').append('<option value="' + value.city_id + '">' +
+                                value.type + ' ' + value.city_name + '</option>');
                         });
                     }
                 });

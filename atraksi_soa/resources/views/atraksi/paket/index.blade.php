@@ -1,6 +1,8 @@
 @extends('dashboard')
 @section('container')
-
+    <div class="mt-4">
+        <a class="btn btn-danger" href="/atraksi">Back</a>
+    </div>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">{{ $atraksi->title }} Paket</h1>
     </div>
@@ -29,8 +31,9 @@
                     <td>{{ $item->harga }}</td>
                     <td>
                         <a href="/atraksi/{{ $atraksi->slug }}/paket/{{ $item->id }}/edit" class="badge bg-warning"><i
-                            class="bi bi-pencil-fill"></i></a>
-                        <form action="/atraksi/{{ $atraksi->slug }}/paket/{{ $item->id }}" method="post" class="d-inline">
+                                class="bi bi-pencil-fill"></i></a>
+                        <form action="/atraksi/{{ $atraksi->slug }}/paket/{{ $item->id }}" method="post"
+                            class="d-inline">
                             @method('delete')
                             @csrf
                             <button href="" class="badge bg-danger border-0"
@@ -42,6 +45,4 @@
             @endforeach
         </tbody>
     </table>
-
-
 @endsection

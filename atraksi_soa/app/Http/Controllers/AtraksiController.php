@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Paket;
+use App\Models\Photo;
 use App\Models\Atraksi;
+use App\Models\Provinsi;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreAtraksiRequest;
 use App\Http\Requests\UpdateAtraksiRequest;
-use Illuminate\Support\Facades\DB;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AtraksiController extends Controller
 {
@@ -26,9 +31,7 @@ class AtraksiController extends Controller
      */
     public function create()
     {
-        return view('atraksi.create', [
-            "provinsi" => DB::table('tbl_provinsi')->get(),
-        ]);
+        return view('atraksi.create');
     }
 
     /**
@@ -66,8 +69,8 @@ class AtraksiController extends Controller
     {
         return view('atraksi.edit', [
             'atraksi' => $atraksi,
-            "provinsi" => DB::table('tbl_provinsi')->get(),
-            "kota" => DB::table('tbl_kabkot')->get(),
+            "provinsi" => $this->getProvinsi(),
+            "kota" => $this->getKota2($atraksi->provinsi),
         ]);
     }
 
@@ -96,13 +99,115 @@ class AtraksiController extends Controller
      */
     public function destroy(Atraksi $atraksi)
     {
+
+        $photos = Photo::where('atraksi_id', $atraksi->id)->get();
+        // dd($photos);
+        foreach ($photos as $item) {
+            File::delete($item->image);
+        }
+
         Atraksi::destroy($atraksi->id);
         return redirect()->back()->with('success', 'Atraksi has been Deleted!');
     }
 
-    public function checkSlug(Request $request) {
+    public function checkSlug(Request $request)
+    {
         $slug = SlugService::createSlug(Atraksi::class, 'slug', $request->title);
         return response()->json(['slug' => $slug]);
     }
 
+    public function getProvinsi()
+    {
+        $provinsi = Http::withHeaders([
+            'key' => '76f567ee91df772c42426d5af9987622'
+        ])->get('https://api.rajaongkir.com/starter/province');
+        // dd($provinsi->json());
+        return json_decode(response()->json([
+            'provinsi' => $provinsi['rajaongkir']['results'],
+        ])->getContent());
+    }
+
+    public function getKota(Request $request)
+    {
+        $city = Http::withHeaders([
+            'key' => '76f567ee91df772c42426d5af9987622'
+        ])->get('https://api.rajaongkir.com/starter/city?province=' . $request['id']);
+        // dd($provinsi->json());
+        return json_decode(response()->json(['cities' => $city['rajaongkir']['results']])->getContent());
+    }
+
+    public function getKota2(int $request)
+    {
+        $city = Http::withHeaders([
+            'key' => '76f567ee91df772c42426d5af9987622'
+        ])->get('https://api.rajaongkir.com/starter/city?province=' . $request);
+        // dd($provinsi->json());
+        return json_decode(response()->json(['cities' => $city['rajaongkir']['results']])->getContent());
+    }
+
+    public function getAllAtraksi()
+    {
+
+        $atraksi = Atraksi::all();
+        $data = [];
+        foreach ($atraksi as $item) {
+            if ($item->is_active) {
+                $item->photo;
+                $tmp = [
+                    'atraksi' => $item,
+                ];
+                $data[] = $tmp;
+            }
+        }
+
+
+        return response()->json($data, 200);
+    }
+
+    public function getAtraksiID(Atraksi $atraksi)
+    {
+
+        if (!$atraksi) {
+            return response()->json([
+                'message' => 'Atraksi tidak ditemukan',
+            ], 404);
+        }
+
+        $data = [
+            'atraksi' => $atraksi->toArray(),
+            'foto' => $atraksi->photo->toArray(),
+        ];
+
+        $paket = $atraksi->paket;
+
+        $pakets = [];
+        foreach ($paket as $item) {
+            $item->type;
+            $tmp = $item;
+
+            $pakets[] = $tmp;
+        }
+
+        $data['paket'] = $pakets;
+
+        return response()->json($data, 200);
+    }
+
+    public function publishAtraksi(Request $request) {
+        $atraksi = Atraksi::where('slug', $request->slug)->withCount('paket')->first();
+
+        // $pakets = $atraksi->withCount('paket')->get();
+
+        if($atraksi->paket_count > 0) {
+            $paket = Paket::where('atraksi_id', $atraksi->id)->min('harga');
+            $data = [
+                'lowest_price' => $paket,
+                'is_active' => true,
+            ];
+
+            $atraksi->update($data);
+
+            return redirect('/atraksi')->with('success', 'Atraksi is Active');
+        }
+    }
 }

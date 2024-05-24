@@ -129,7 +129,7 @@
                 id="is_refundable">
 
                 <option value="0">Tidak</option>
-                <option value="0">Ya</option>
+                <option value="1">Ya</option>
 
             </select>
         </div>

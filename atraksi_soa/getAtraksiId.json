@@ -1,0 +1,83 @@
+{
+    "atraksi": {
+      "id": 2,
+      "rating_id": null,
+      "title": "Jatim Park 1",
+      "slug": "jatim-park-1",
+      "deskripsi": "<div>sdfasdfadf</div>",
+      "info_penting": "<div>asdfadffas</div>",
+      "highlight": "<div>fadfdffafa</div>",
+      "provinsi": "11",
+      "kota": "51",
+      "gps_location": "0",
+      "lowest_price": 0,
+      "discount_price": 0,
+      "is_active": 0,
+      "created_at": "2024-05-15T15:45:33.000000Z",
+      "updated_at": "2024-05-17T07:07:54.000000Z"
+    },
+    "foto": [
+      {
+        "id": 3,
+        "atraksi_id": 2,
+        "image": "upload/atraksi/image/6645ae8e107d6.png",
+        "placeholder": "Atraksi_SOA (1).png",
+        "created_at": "2024-05-16T06:58:22.000000Z",
+        "updated_at": "2024-05-16T06:58:22.000000Z"
+      },
+      {
+        "id": 4,
+        "atraksi_id": 2,
+        "image": "upload/atraksi/image/6645ae8e3ed0b.png",
+        "placeholder": "Atraksi_SOA.png",
+        "created_at": "2024-05-16T06:58:22.000000Z",
+        "updated_at": "2024-05-16T06:58:22.000000Z"
+      }
+    ],
+    "paket": [
+      {
+        "id": 6,
+        "atraksi_id": 2,
+        "type_id": 2,
+        "title": "Tiker fast track",
+        "deskripsi": "<div>asdadsad</div>",
+        "fasilitas": "<div>adsaddad</div>",
+        "cara_penukaran": "<div>adsadad</div>",
+        "syarat_dan_ketentuan": "<div>asdada</div>",
+        "harga": 100000,
+        "harga_discount": 5,
+        "masa_berlaku": 1,
+        "is_refundable": 0,
+        "created_at": "2024-05-15T15:47:02.000000Z",
+        "updated_at": "2024-05-17T06:04:34.000000Z",
+        "type": {
+          "id": 2,
+          "created_at": "2024-05-15T07:21:34.000000Z",
+          "updated_at": "2024-05-15T07:21:34.000000Z",
+          "name": "Fast Track"
+        }
+      },
+      {
+        "id": 8,
+        "atraksi_id": 2,
+        "type_id": 1,
+        "title": "Tiket Terusan(Full day)",
+        "deskripsi": "<div>asdadsad</div>",
+        "fasilitas": "<div>adsaddad</div>",
+        "cara_penukaran": "<div>tukarin aja di loket ribet lu</div>",
+        "syarat_dan_ketentuan": "<div>asdada</div>",
+        "harga": 75000,
+        "harga_discount": 5,
+        "masa_berlaku": 1,
+        "is_refundable": 0,
+        "created_at": "2024-05-17T05:56:45.000000Z",
+        "updated_at": "2024-05-17T05:56:45.000000Z",
+        "type": {
+          "id": 1,
+          "created_at": "2024-05-15T07:21:21.000000Z",
+          "updated_at": "2024-05-15T07:21:21.000000Z",
+          "name": "Regular"
+        }
+      }
+    ]
+  }

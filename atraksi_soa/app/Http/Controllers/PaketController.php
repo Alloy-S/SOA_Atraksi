@@ -81,9 +81,24 @@ class PaketController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePaketRequest $request, Paket $paket)
+    public function update(UpdatePaketRequest $request, Atraksi $atraksi, Paket $paket)
     {
-        //
+        $validatedData = $request->validate([
+            'atraksi_id' => 'required',
+            'type_id' => 'required',
+            'title' => 'required|max:255',
+            'deskripsi' => 'required',
+            'fasilitas' => 'required',
+            'cara_penukaran' => 'required',
+            'syarat_dan_ketentuan' => 'required',
+            'harga' => 'required|numeric',
+            'harga_discount' => 'required|numeric',
+            'masa_berlaku' => 'required|numeric',
+            'is_refundable' => 'required',
+        ]);
+
+        Paket::where('id', $paket->id)->update($validatedData);
+        return redirect('/atraksi/'.$atraksi->slug.'/paket')->with('success', 'paket has been updated!');
     }
 
     /**

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('masa_berlaku');
             $table->boolean('is_refundable');
             $table->timestamps();
+            $table->foreign('atraksi_id')->references('id')->on('atraksis')->onDelete('cascade');
         });
     }
 

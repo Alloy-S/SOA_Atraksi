@@ -3,7 +3,8 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Create New Paket</h1>
     </div>
-    <form action="/atraksi/{{ $atraksi->slug }}/paket" method="post" class="col-lg-8 mb-5">
+    <form action="/atraksi/{{ $atraksi->slug }}/paket/{{ $paket->id }}" method="post" class="col-lg-8 mb-5">
+        @method('put')
         @csrf
 
         <input type="text" name="atraksi_id" value="{{ $atraksi->id }}" hidden>
@@ -135,9 +136,11 @@
                 id="is_refundable">
 
                 @if ($paket->is_refundable)
-                    <option value="1">Ya</option>
-                @else
                     <option value="0">Tidak</option>
+                    <option value="1" selected>Ya</option>
+                @else
+                    <option value="0" selected>Tidak</option>
+                    <option value="1">Ya</option>
                 @endif
 
 
@@ -147,7 +150,7 @@
 
 
 
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </form>
 
