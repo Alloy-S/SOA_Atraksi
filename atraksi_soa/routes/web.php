@@ -14,8 +14,11 @@ Route::get('/', function () {
     ]);
 });
 
+// untuk API
 Route::get('/api/atraksi/all', [AtraksiController::class, 'getAllAtraksi']);
 Route::get('/api/atraksi/{atraksi}', [AtraksiController::class, 'getAtraksiId']);
+
+// untuk admin
 Route::get('/provinsi', [AtraksiController::class, 'getProvinsi']);
 Route::get('/cities/{id}', [AtraksiController::class, 'getkota']);
 Route::get('/atraksi/checkSlug', [AtraksiController::class, 'checkSlug']);

@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TypeSeeder extends Seeder
 {
@@ -12,6 +13,12 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('type')->insert([
+            'name' => 'Regular',
+        ]);
+
+        DB::table('type')->insert([
+            'name' => 'Fast Track',
+        ]);
     }
 }

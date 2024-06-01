@@ -108,6 +108,17 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label for="kuota" class="form-label">kuota</label>
+            <input type="number" class="form-control @error('kuota') is-invalid @enderror" id="kuota" name="kuota"
+                required autofocus value="{{ old('kuota') }}">
+
+            @error('kuota')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mb-3">
             <label for="masa_berlaku" class="form-label">Masa Berlaku</label>
             <input type="number" class="form-control @error('masa_berlaku') is-invalid @enderror" id="masa_berlaku"
                 name="masa_berlaku" required autofocus value="{{ old('masa_berlaku') }}">

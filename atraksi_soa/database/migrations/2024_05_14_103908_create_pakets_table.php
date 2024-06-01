@@ -23,6 +23,7 @@ return new class extends Migration
             $table->double('harga');
             $table->double('harga_discount');
             $table->integer('masa_berlaku');
+            $table->integer('kuota');
             $table->boolean('is_refundable');
             $table->timestamps();
             $table->foreign('atraksi_id')->references('id')->on('atraksis')->onDelete('cascade');

@@ -47,6 +47,7 @@ class PaketController extends Controller
             'syarat_dan_ketentuan' => 'required',
             'harga' => 'required|numeric',
             'harga_discount' => 'required|numeric',
+            'kuota' => 'required|numeric',
             'masa_berlaku' => 'required|numeric',
             'is_refundable' => 'required',
         ]);
@@ -93,6 +94,7 @@ class PaketController extends Controller
             'syarat_dan_ketentuan' => 'required',
             'harga' => 'required|numeric',
             'harga_discount' => 'required|numeric',
+            'kuota' => 'required|numeric',
             'masa_berlaku' => 'required|numeric',
             'is_refundable' => 'required',
         ]);

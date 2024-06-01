@@ -11,16 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('etickets', function (Blueprint $table) {
+        Schema::create('tgl_tutups', function (Blueprint $table) {
             $table->id();
-            $table->string('booking_code')->unique(); 
-            $table->string('ticket_code')->unique();
             $table->foreignId('atraksi_id');
-            $table->foreignId('paket_id');
-            $table->string('nama');
-            $table->string('jenis');
-            $table->date('valid_until');
-            $table->dateTime('check_id')->nullable();
+            $table->date('tgl');
             $table->timestamps();
         });
     }
@@ -30,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('etickets');
+        Schema::dropIfExists('tgl_tutups');
     }
 };
