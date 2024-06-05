@@ -2,9 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Paket;
 use App\Models\eticket;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Resources\EticketResource;
 use App\Http\Requests\StoreeticketRequest;
 use App\Http\Requests\UpdateeticketRequest;
+use Illuminate\Support\Carbon;
+
+use function Symfony\Component\Clock\now;
 
 class EticketController extends Controller
 {
@@ -13,7 +21,7 @@ class EticketController extends Controller
      */
     public function index()
     {
-        //
+        return EticketResource::collection(eticket::all());
     }
 
     /**
@@ -29,7 +37,29 @@ class EticketController extends Controller
      */
     public function store(StoreeticketRequest $request)
     {
-        //
+
+        $paket = Paket::where('id', $request->paket_id)->first();
+
+        $data = [];
+        for ($i = 0; $i < $request->jml_ticket; $i++) {
+
+            $eticket = [];
+            $eticket['paket_id'] = $request->paket_id;
+            $eticket['booking_code'] = $request->booking_code;
+            $eticket['jenis'] = $paket->type->name;
+            $eticket['ticket_code'] = strtoupper(Str::random(6));
+            $eticket['valid_until'] = Carbon::now()->addDays($paket->masa_berlaku)->toDateString();
+
+            $data[] = $eticket;
+
+            $eticket = eticket::create($eticket);
+        }
+        // dd($data);
+
+        $response['jml_ticket'] = $request->jml_ticket;
+        $response['ticket'] = $data;
+
+        return response()->json($response, 200);
     }
 
     /**
@@ -45,7 +75,7 @@ class EticketController extends Controller
      */
     public function edit(eticket $eticket)
     {
-        //
+
     }
 
     /**
@@ -53,7 +83,13 @@ class EticketController extends Controller
      */
     public function update(UpdateeticketRequest $request, eticket $eticket)
     {
-        //
+        $eticket = eticket::where('id', $eticket->id)->update([
+            "check_id" => Carbon::now()->toDateTimeString(),
+        ]);
+
+
+
+        return response()->json($eticket, 200);
     }
 
     /**

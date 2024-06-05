@@ -40,4 +40,8 @@ class Atraksi extends Model
     public function JamBuka() {
         return $this->hasMany(JamBuka::class);
     }
+
+    public function tgl_tutup() {
+        return $this->hasMany(tgl_tutup::class);
+    }
 }

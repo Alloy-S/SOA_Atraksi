@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class eticket extends Model
 {
     use HasFactory;
+
+    protected $guarded = [
+        'id'
+    ];
+
+    public function getRouteKeyName(): string
+    {
+        return 'id';
+    }
+
 }

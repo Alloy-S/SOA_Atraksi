@@ -77,6 +77,7 @@
                 @endforeach --}}
             </select>
         </div>
+        <input type="text" id="provinsi_name" name="provinsi_name" hidden>
         <div class="mb-3">
             <label for="kota" class="form-label">Kota</label>
             @error('kota')
@@ -87,6 +88,7 @@
             <select class="form-select kota" aria-label="Default select example" name="kota" id="kota">
             </select>
         </div>
+        <input type="text" id="kota_name" name="kota_name" hidden>
 
         <div class="mb-3">
             <label for="gps_location" class="form-label">GPS Location</label>
@@ -140,6 +142,7 @@
 
             $('#provinsi').change(function() {
                 var provinsiId = $(this).val();
+                $("#provinsi_name").val($(this).find("option:selected").text());
                 console.log(provinsiId);
                 $.ajax({
                     url: '/cities/' + provinsiId,
@@ -155,6 +158,10 @@
                         $('#kota').attr('disabled', false);
                     }
                 });
+            });
+
+            $('#kota').change(function() {
+                $("#kota_name").val($(this).find("option:selected").text());
             })
         });
     </script>

@@ -11,7 +11,7 @@ class StoreeticketRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class StoreeticketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'paket_id' => 'required',
+            'jml_ticket' => 'required',
+            'booking_code' => 'required',
+
+
         ];
     }
 }

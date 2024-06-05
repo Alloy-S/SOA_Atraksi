@@ -21,7 +21,6 @@ return new class extends Migration
             $table->text('cara_penukaran');
             $table->text('syarat_dan_ketentuan');
             $table->double('harga');
-            $table->double('harga_discount');
             $table->integer('masa_berlaku');
             $table->integer('kuota');
             $table->boolean('is_refundable');

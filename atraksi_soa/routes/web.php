@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\AtraksiController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Database\Factories\AtraksiFactory;
+use App\Http\Controllers\TypeController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\AtraksiController;
+use App\Http\Controllers\EticketController;
 use App\Http\Controllers\ProvinsiController;
-use App\Http\Controllers\TypeController;
-use Database\Factories\AtraksiFactory;
-use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dashboard', [
@@ -14,9 +16,7 @@ Route::get('/', function () {
     ]);
 });
 
-// untuk API
-Route::get('/api/atraksi/all', [AtraksiController::class, 'getAllAtraksi']);
-Route::get('/api/atraksi/{atraksi}', [AtraksiController::class, 'getAtraksiId']);
+
 
 // untuk admin
 Route::get('/provinsi', [AtraksiController::class, 'getProvinsi']);

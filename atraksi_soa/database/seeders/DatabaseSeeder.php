@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\JamBuka;
 use App\Models\Type;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -28,6 +29,50 @@ class DatabaseSeeder extends Seeder
         Type::factory()->create([
             'name' => 'Fast Track',
         ]);
+
+        JamBuka::factory()->create([
+            'atraksi_id' => 1,
+            'hari' => 'Senin',
+            'waktu' => '09:00 - 17:00',
+            'is_open' => true
+        ]);
+        JamBuka::factory()->create([
+            'atraksi_id' => 1,
+            'hari' => 'Selasa',
+            'waktu' => '09:00 - 17:00',
+            'is_open' => true
+        ]);
+        JamBuka::factory()->create([
+            'atraksi_id' => 1,
+            'hari' => 'Rabu',
+            'waktu' => '09:00 - 17:00',
+            'is_open' => true
+        ]);
+        JamBuka::factory()->create([
+            'atraksi_id' => 1,
+            'hari' => 'Kamis',
+            'waktu' => '09:00 - 17:00',
+            'is_open' => true
+        ]);
+        JamBuka::factory()->create([
+            'atraksi_id' => 1,
+            'hari' => 'Jumat',
+            'waktu' => '09:00 - 17:00',
+            'is_open' => true
+        ]);
+        JamBuka::factory()->create([
+            'atraksi_id' => 1,
+            'hari' => 'Sabtu',
+            'waktu' => '09:00 - 17:00',
+            'is_open' => true
+        ]);
+        JamBuka::factory()->create([
+            'atraksi_id' => 1,
+            'hari' => 'Minggu',
+            'waktu' => '09:00 - 17:00',
+            'is_open' => true
+        ]);
+
 
 
     }

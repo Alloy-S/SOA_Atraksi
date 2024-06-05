@@ -17,7 +17,7 @@ class TglTutupFactory extends Factory
     public function definition(): array
     {
         return [
-            'atraksi_id' => mt_rand(4,5),
+            'atraksi_id' => 1,
             'tgl' => fake()->dateTimeThisYear(),
         ];
     }

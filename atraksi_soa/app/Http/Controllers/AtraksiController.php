@@ -46,7 +46,9 @@ class AtraksiController extends Controller
             'info_penting' => 'required',
             'highlight' => 'required',
             'provinsi' => 'required',
+            'provinsi_name' => 'required',
             'kota' => 'required',
+            'kota_name' => 'required',
             'gps_location' => 'required',
         ]);
 
@@ -86,7 +88,9 @@ class AtraksiController extends Controller
             'info_penting' => 'required',
             'highlight' => 'required',
             'provinsi' => 'required',
+            'provinsi_name' => 'required',
             'kota' => 'required',
+            'kota_name' => 'required',
             'gps_location' => 'required',
         ]);
 
@@ -145,39 +149,26 @@ class AtraksiController extends Controller
         return json_decode(response()->json(['cities' => $city['rajaongkir']['results']])->getContent());
     }
 
-    public function getAllAtraksi()
+    public function getAtraksiInfo()
     {
 
-        $atraksi = Atraksi::all();
-        $data = [];
-        foreach ($atraksi as $item) {
-            if ($item->is_active) {
-                $item->photo;
-                $tmp = [
-                    'atraksi' => $item,
-                ];
-                $data[] = $tmp;
-            }
-        }
-
+        $atraksi = Atraksi::first();
+        $data = $atraksi;
+        $data['photo'] = DB::table("photos")->select(['image', 'placeholder'])->where('atraksi_id', $atraksi->id)->get();
+        $data['jam_nuka'] = DB::table("jam_bukas")->select(['hari', 'waktu', 'is_open'])->where('atraksi_id', $atraksi->id)->get();
 
         return response()->json($data, 200);
     }
 
-    public function getAtraksiID(Atraksi $atraksi)
+    public function getAtraksiPaket()
     {
 
-        if (!$atraksi) {
-            return response()->json([
-                'message' => 'Atraksi tidak ditemukan',
-            ], 404);
-        }
+        $atraksi = Atraksi::first();
 
-        $data = [
-            'atraksi' => $atraksi->toArray(),
-            'foto' => $atraksi->photo->toArray(),
+        $data['atraksi'] = [
+            'atraksi_id' => $atraksi->title,
+            'title' => $atraksi->title,
         ];
-
         $paket = $atraksi->paket;
 
         $pakets = [];
@@ -189,6 +180,7 @@ class AtraksiController extends Controller
         }
 
         $data['paket'] = $pakets;
+
 
         return response()->json($data, 200);
     }

@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('atraksis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('rating_id')->nullable();
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('deskripsi');
             $table->text('info_penting');
             $table->text('highlight');
             $table->string('provinsi');
+            $table->string('provinsi_name');
             $table->string('kota');
+            $table->string('kota_name');
             $table->string('gps_location');
             $table->double('lowest_price')->default(0);
-            $table->double('discount_price')->default(0);
             $table->boolean('is_active')->default(false);
             $table->timestamps();
 
