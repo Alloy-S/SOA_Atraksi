@@ -27,7 +27,7 @@ class DatabaseWrapper:
         cursor.close()
         return result
     
-    def get_ticket_type(self, type_id):
+    def get_ticket_type_id(self, type_id):
         cursor = self.connection.cursor(dictionary=True)
         result = None
         # print(self.atraksi_id)
@@ -78,14 +78,12 @@ class DatabaseWrapper:
     
     def get_atraksi_paket_id(self, id_paket):
         cursor = self.connection.cursor(dictionary=True)
-        result = {}
         paket = None
         sql = "SELECT id AS paket_id, atraksi_id, type_id, title, deskripsi, fasilitas, cara_penukaran, syarat_dan_ketentuan, harga,kuota, is_refundable FROM pakets WHERE id={0}".format(id_paket)
         cursor.execute(sql)
         paket = cursor.fetchone()
         cursor.close()
-        result['paket'] = paket
-        return result
+        return paket
     
     def get_atraksi_tutup(self):
         cursor = self.connection.cursor(dictionary=True)
