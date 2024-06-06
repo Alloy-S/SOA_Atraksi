@@ -13,7 +13,9 @@ class JamBukaController extends Controller
      */
     public function index()
     {
-        //
+        $jamBuka = jam_bukas::all();
+
+        return view('jambuka.index', compact('jamBuka'));
     }
 
     /**
@@ -21,7 +23,7 @@ class JamBukaController extends Controller
      */
     public function create()
     {
-        //
+        return view('jambuka.create');
     }
 
     /**
@@ -29,7 +31,8 @@ class JamBukaController extends Controller
      */
     public function store(StoreJamBukaRequest $request)
     {
-        //
+        jam_bukas::create($request -> validated());
+        return redirect()->route('jambuka.index')->with('success', 'Jam buka created');
     }
 
     /**
@@ -37,7 +40,7 @@ class JamBukaController extends Controller
      */
     public function show(JamBuka $jamBuka)
     {
-        //
+        return view('jamBuka.show', compact('jamBuka'));
     }
 
     /**
@@ -45,7 +48,7 @@ class JamBukaController extends Controller
      */
     public function edit(JamBuka $jamBuka)
     {
-        //
+        return view('jamBuka.edit', compact('jamBuka'));
     }
 
     /**
@@ -53,7 +56,8 @@ class JamBukaController extends Controller
      */
     public function update(UpdateJamBukaRequest $request, JamBuka $jamBuka)
     {
-        //
+        $jamBuka->update($request->validated());
+        return redirect()->route('jamBuka.index')->with('success', 'Jam Buka updated successfully.');
     }
 
     /**
@@ -61,6 +65,7 @@ class JamBukaController extends Controller
      */
     public function destroy(JamBuka $jamBuka)
     {
-        //
+         $jamBuka->delete();
+         return redirect()->route('jamBuka.index')->with('success', 'Jam Buka deleted successfully.');
     }
 }
