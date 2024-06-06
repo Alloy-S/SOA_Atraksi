@@ -27,6 +27,17 @@ class RoomService:
         atraksi = self.database.get_atraksi_paket()
         # print(type(atraksi))
         return atraksi
+    
+    @rpc
+    def get_atraksi_tutup(self):
+        atraksi = self.database.get_atraksi_tutup()
+        return atraksi
+    
+    @rpc
+    def get_atraksi_paket(self):
+        atraksi = self.database.get_atraksi_paket()
+        return atraksi
+        
 
     # @rpc
     # def get_all_room_type(self):

@@ -18,6 +18,18 @@ class GatewayService:
     def get_atraksi_paket(self, request):
         result = self.atraksi.get_atraksi_paket()
         return json.dumps(result)
+    
+    @http('GET', '/api/atraksi/tgl')
+    def get_atraksi_tutup(self, request):
+        result = self.atraksi.get_atraksi_tutup()
+        return json.dumps(result)
+    
+    @http('GET', '/api/atraksi/paket/<string:id_paket>')
+    def get_atraksi_paket(self, request, id_paket):
+        result = self.get_atraksi_paket(id_paket)
+        return json.dumps(result)
+    
+
 
     # @http('GET', '/room')
     # def get_rooms(self, request):

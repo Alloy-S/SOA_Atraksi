@@ -63,6 +63,24 @@ class DatabaseWrapper:
         result['paket'] = paket
         return result
     
+    def get_atraksi_tutup(self):
+        cursor = self.connection.cursor(dictionary=True)
+        sql =  "SELECT `tgl` FROM `tgl_tutups`"
+        rows = cursor.fetchall()
+        tutup = [row['tgl'] for row in rows]
+        cursor.close()
+        return tutup
+    
+    def get_atraksi_paket(self):
+        cursor = self.db.cursor(dictionary=True)
+        sql = "SELECT `id` FROM `pakets`"
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        ids = [row['id'] for row in rows]
+        cursor.close()
+        return ids
+    
+    
     def __del__(self):
         self.connection.close()
 
