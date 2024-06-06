@@ -71,14 +71,13 @@ class DatabaseWrapper:
         cursor.close()
         return tutup
     
-    def get_atraksi_paket(self):
+    def get_atraksi_paketdetail(self, id):
         cursor = self.db.cursor(dictionary=True)
-        sql = "SELECT `id` FROM `pakets`"
-        cursor.execute(sql)
-        rows = cursor.fetchall()
-        ids = [row['id'] for row in rows]
+        sql = "SELECT * FROM `pakets` WHERE `id` = %s"
+        cursor.execute(sql, (id,))
+        details = cursor.fetchone()
         cursor.close()
-        return ids
+        return details
     
     
     def __del__(self):

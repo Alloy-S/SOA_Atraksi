@@ -24,10 +24,12 @@ class GatewayService:
         result = self.atraksi.get_atraksi_tutup()
         return json.dumps(result)
     
-    @http('GET', '/api/atraksi/paket/<string:id_paket>')
-    def get_atraksi_paket(self, request, id_paket):
-        result = self.get_atraksi_paket(id_paket)
-        return json.dumps(result)
+    @http('GET', '/api/atraksi/paket/<int:id>')
+    def get_package_details(self, request, id):
+        package_details = self.package_rpc.get_package_details(id)
+        if package_details is None:
+            return json.dumps({'error': 'Package not found'}), 404, {'Content-Type': 'application/json'}
+        return json.dumps(package_details), 200, {'Content-Type': 'application/json'}
     
 
 
