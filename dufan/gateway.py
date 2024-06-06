@@ -14,9 +14,41 @@ class GatewayService:
         result = self.atraksi.get_atraksi_info()
         return json.dumps(result)
     
+    @http('GET', '/api/atraksi/paket/<int:id_paket>')
+    def get_atraksi_paket_id(self, request, id_paket):
+        result = self.atraksi.get_atraksi_paket_id(id_paket)
+        return json.dumps(result)
+    
     @http('GET', '/api/atraksi/paket')
     def get_atraksi_paket(self, request):
         result = self.atraksi.get_atraksi_paket()
+        return json.dumps(result)
+    
+    @http('GET', '/api/atraksi/tgl')
+    def get_atraksi_tutup(self, request):
+        result = self.atraksi.get_atraksi_tutup()
+        return json.dumps(result)
+
+
+    @http('POST', '/api/eticket')
+    def create_eticket(self, request):
+        data = request.get_data(as_text=True)
+        data = json.loads(data)
+        paket_id = None
+        jml_ticket = None
+        booking_code = None
+        tgl_booking = None
+        try:
+            paket_id = data['paket_id']
+            jml_ticket = data['jml_ticket']
+            booking_code = data['booking_code']
+            tgl_booking = data['tgl_booking']
+        except:
+            return 400, "invalid format input"
+        
+        
+        
+        result = self.atraksi.create_eticket(paket_id, jml_ticket, booking_code, tgl_booking)
         return json.dumps(result)
 
     @http('DELETE', '/api/eticket/<int:eticket_id>')

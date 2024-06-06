@@ -27,6 +27,25 @@ class RoomService:
         atraksi = self.database.get_atraksi_paket()
         # print(type(atraksi))
         return atraksi
+    
+    @rpc
+    def get_atraksi_tutup(self):
+        atraksi = self.database.get_atraksi_tutup()
+        return atraksi
+    
+    @rpc
+    def get_atraksi_paket_id(self, id_paket):
+        atraksi = self.database.get_atraksi_paket_id(id_paket)
+        return atraksi
+        
+    def create_eticket(self, paket_id, jml_ticket, booking_code, tgl_booking):
+        jenis = 'regular'
+        paket = self.database.get_atraksi_paket()
+        data = []
+        for i in range(jml_ticket):
+            data.append(self.database.create_eticket(paket_id, jml_ticket, booking_code, jenis, tgl_booking))
+        # print(type(atraksi))
+        return data
 
     @rpc
     def delete_eticket(self, eticket_id):

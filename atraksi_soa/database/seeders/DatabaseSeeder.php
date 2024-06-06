@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Atraksi;
 use App\Models\JamBuka;
+use App\Models\Paket;
 use App\Models\Type;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -28,6 +30,37 @@ class DatabaseSeeder extends Seeder
 
         Type::factory()->create([
             'name' => 'Fast Track',
+        ]);
+
+        Atraksi::factory()->create([
+            'title' => 'Dufan',
+            'slug' => 'Dufan',
+            'deskripsi' => 'Dufan',
+            'info_penting' => 'Dufan',
+            'highlight' => 'Dufan',
+            'provinsi' => 2,
+            'provinsi_name' => 'Dufan',
+            'kota' => 2,
+            'kota_name' => 'Dufan',
+            'lowest_price' => 100000,
+            'is_active' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Paket::factory()->create([
+            'atraksi_id' => 1,
+            'type_id' => 1,
+            'title' => "Full Day - Regular",                  // Generate a fake title
+            'deskripsi' => 'asdfgadfgdfg',             // Generate a fake description
+            'fasilitas' => 'asdfgadfgdfg',             // Generate fake facilities
+            'cara_penukaran' => 'asdfgadfgdfg',        // Generate fake exchange procedure
+            'syarat_dan_ketentuan' => 'asdfgadfgdfg',  // Generate fake terms and conditions
+            'harga' => 100000,     // Generate a fake price
+            'kuota' => 100,       // Generate a fake quota
+            'is_refundable' => 1,            // Random boolean for is_refundable
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         JamBuka::factory()->create([

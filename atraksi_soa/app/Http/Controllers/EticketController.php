@@ -21,7 +21,7 @@ class EticketController extends Controller
      */
     public function index()
     {
-        return EticketResource::collection(eticket::all());
+        // return EticketResource::collection(eticket::all());
     }
 
     /**
@@ -39,6 +39,10 @@ class EticketController extends Controller
     {
 
         $paket = Paket::where('id', $request->paket_id)->first();
+
+        if ($paket == null) {
+            return response()->json("paket tidak ditemukan", 404);
+        }
 
         $data = [];
         for ($i = 0; $i < $request->jml_ticket; $i++) {
