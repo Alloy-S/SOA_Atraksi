@@ -131,6 +131,21 @@ class DatabaseWrapper:
     
     def __del__(self):
         self.connection.close()
+        
+    def delete_eticket(self, eticket_id):
+        cursor = self.connection.cursor(dictionary=True)
+        try:
+            sql = "DELETE FROM etickets WHERE id = %s"
+            cursor.execute(sql, (eticket_id,))
+            self.connection.commit()
+            result = cursor.rowcount
+        except Error as e:
+            print("Error while deleting e-ticket", e)
+            result = None
+        finally:
+            cursor.close()
+        return result
+
 
 
 class Database(DependencyProvider):
