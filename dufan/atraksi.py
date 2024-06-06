@@ -34,10 +34,18 @@ class RoomService:
         return atraksi
     
     @rpc
-    def get_atraksi_paket(self):
-        atraksi = self.database.get_atraksi_paket()
+    def get_atraksi_paket_id(self, id_paket):
+        atraksi = self.database.get_atraksi_paket_id(id_paket)
         return atraksi
         
+    def create_eticket(self, paket_id, jml_ticket, booking_code, tgl_booking):
+        jenis = 'regular'
+        paket = self.database.get_atraksi_paket()
+        data = []
+        for i in range(jml_ticket):
+            data.append(self.database.create_eticket(paket_id, jml_ticket, booking_code, jenis, tgl_booking))
+        # print(type(atraksi))
+        return data
 
     # @rpc
     # def get_all_room_type(self):

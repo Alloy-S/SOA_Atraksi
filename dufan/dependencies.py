@@ -3,6 +3,9 @@ from nameko.extensions import DependencyProvider
 import mysql.connector
 from mysql.connector import Error
 from mysql.connector import pooling
+from datetime import datetime
+import string
+import random
 
 class DatabaseWrapper:
 
@@ -21,6 +24,16 @@ class DatabaseWrapper:
         for row in cursor.fetchall():
             data = row
             result.append(data)
+        cursor.close()
+        return result
+    
+    def get_ticket_type(self, type_id):
+        cursor = self.connection.cursor(dictionary=True)
+        result = None
+        # print(self.atraksi_id)
+        sql = "SELECT name FROM types WHERE id={0}".format(type_id)
+        cursor.execute(sql)
+        result = cursor.fetchone()
         cursor.close()
         return result
     
@@ -54,11 +67,22 @@ class DatabaseWrapper:
         cursor = self.connection.cursor(dictionary=True)
         result = {}
         paket = []
-        sql = "SELECT id AS paket_id, atraksi_id, type_id, title, deskripsi, fasilitas, cara_penukaran, syarat_dan_ketentuan, harga, harga_discount,kuota, masa_berlaku, is_refundable FROM pakets WHERE atraksi_id={0}".format(self.atraksi_id)
+        sql = "SELECT id AS paket_id, atraksi_id, type_id, title, deskripsi, fasilitas, cara_penukaran, syarat_dan_ketentuan, harga,kuota, is_refundable FROM pakets WHERE atraksi_id={0}".format(self.atraksi_id)
         cursor.execute(sql)
         for row in cursor.fetchall():
             data = row
             paket.append(data)
+        cursor.close()
+        result['paket'] = paket
+        return result
+    
+    def get_atraksi_paket_id(self, id_paket):
+        cursor = self.connection.cursor(dictionary=True)
+        result = {}
+        paket = None
+        sql = "SELECT id AS paket_id, atraksi_id, type_id, title, deskripsi, fasilitas, cara_penukaran, syarat_dan_ketentuan, harga,kuota, is_refundable FROM pakets WHERE id={0}".format(id_paket)
+        cursor.execute(sql)
+        paket = cursor.fetchone()
         cursor.close()
         result['paket'] = paket
         return result
@@ -71,15 +95,41 @@ class DatabaseWrapper:
         cursor.close()
         return tutup
     
-    def get_atraksi_paket(self):
-        cursor = self.db.cursor(dictionary=True)
-        sql = "SELECT `id` FROM `pakets`"
-        cursor.execute(sql)
-        rows = cursor.fetchall()
-        ids = [row['id'] for row in rows]
-        cursor.close()
-        return ids
+    def generate_random_string(self, length=6):
+        letters = string.ascii_uppercase + string.digits
+        result = ''.join(random.choice(letters) for i in range(length))
+        # print(result)
+        return result
     
+    def create_eticket(self, paket_id, jml_ticket, booking_code, jenis, tgl_booking):
+        cursor = self.connection.cursor(dictionary=True)
+        created_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        valid_at = tgl_booking
+        ticket_code = self.generate_random_string()
+        response = None
+        try:
+            sql = "INSERT INTO etickets (booking_code, ticket_code, paket_id, jenis, created_at, valid_at, check_in) VALUES ('{0}', '{1}', {2}, '{3}', '{4}', '{5}', NULL);".format(booking_code, ticket_code, paket_id, jenis, created_at, valid_at)
+            # print(sql);
+            cursor.execute(sql)
+            self.connection.commit()
+            
+            response = {
+                'ticket_code': ticket_code,
+                'booking_code': booking_code,
+                'paket_id': paket_id,
+                'jenis': jenis,
+                'created_at': created_at,
+                'valid_at': valid_at,
+            }
+        except mysql.connector.Error as e:
+            
+            self.connection.rollback()
+            response = {
+                'code': 400,
+                'response': e
+            }
+            
+        return response
     
     def __del__(self):
         self.connection.close()
