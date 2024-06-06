@@ -28,6 +28,10 @@ class RoomService:
         # print(type(atraksi))
         return atraksi
 
+    @rpc
+    def delete_eticket(self, eticket_id):
+        return self.database.delete_eticket(eticket_id)
+    
     # @rpc
     # def get_all_room_type(self):
     #     room_types = self.database.get_all_room_type()

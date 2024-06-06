@@ -19,6 +19,14 @@ class GatewayService:
         result = self.atraksi.get_atraksi_paket()
         return json.dumps(result)
 
+    @http('DELETE', '/api/eticket/<int:eticket_id>')
+    def delete_eticket(self, request, eticket_id):
+        result = self.atraksi.delete_eticket(eticket_id)
+        if "error" in result:
+            return 400, json.dumps(result)
+        else:
+            return json.dumps(result)
+        
     # @http('GET', '/room')
     # def get_rooms(self, request):
     #     rooms = self.hotel_rpc.get_all_room()
