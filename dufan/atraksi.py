@@ -14,7 +14,9 @@ class RoomService:
         atraksi = self.database.get_atraksi_info()
         # print(type(atraksi))
         if atraksi != None:
-            atraksi['photo'] = self.database.get_atraksi_photo()
+            atraksi['photo'] = self.database.get_atraksi_photo_s3()
+            # kalo eror pake yang bawah yg atas itu connect ke aws
+            # atraksi['photo'] = self.database.get_atraksi_photo()
             atraksi['jam_buka'] = self.database.get_atraksi_jam_buka()
             return atraksi
         else: 

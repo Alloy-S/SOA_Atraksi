@@ -6,11 +6,17 @@ from mysql.connector import pooling
 from datetime import datetime
 import string
 import random
+import boto3
+
 
 class DatabaseWrapper:
 
     connection = None
     atraksi_id = 1
+    # kalau eror ini di comment aja
+    BUCKET_NAME = 'soa-dufan'
+    s3 = boto3.client('s3')
+    # comment sampe sini
 
     def __init__(self, connection):
         self.connection = connection
@@ -26,6 +32,18 @@ class DatabaseWrapper:
             result.append(data)
         cursor.close()
         return result
+    
+    # kalau eror ini di comment aja
+    def get_atraksi_photo_s3(self):
+        response = self.s3.list_objects_v2(Bucket=self.BUCKET_NAME)
+        result = []
+        for obj in response['Contents']:
+            # print(obj)
+            key = obj['Key'].replace(" ", "+")
+            url = "https://{0}.s3.amazonaws.com/{1}".format(self.BUCKET_NAME, key)
+            result.append(url)
+        return result
+    # comment sampe sini
     
     def get_ticket_type_id(self, type_id):
         cursor = self.connection.cursor(dictionary=True)
@@ -52,7 +70,7 @@ class DatabaseWrapper:
     def get_atraksi_info(self):
         cursor = self.connection.cursor(dictionary=True)
         result = None
-        sql = "SELECT id AS atraksi_id, title, slug, deskripsi, info_penting, highlight, provinsi, kota, lowest_price, discount_price, is_active FROM atraksis WHERE id={0} AND is_active=true".format(self.atraksi_id)
+        sql = "SELECT id AS atraksi_id, title, slug, deskripsi, info_penting, highlight, provinsi, kota, lowest_price, is_active FROM atraksis WHERE id={0} AND is_active=true".format(self.atraksi_id)
         # print(sql)
         cursor.execute(sql)
         for row in cursor.fetchall():
