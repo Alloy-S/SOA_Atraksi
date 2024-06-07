@@ -47,6 +47,11 @@ class RoomService:
         for i in range(jml_ticket):
             data.append(self.database.create_eticket(paket_id, jml_ticket, booking_code, type['name'], tgl_booking))
         return data
+    
+    @rpc
+    def check_in(self, ticket_code):
+        ticket = self.database.check_in(ticket_code)
+        return ticket
 
     @rpc
     def delete_eticket(self, eticket_id):

@@ -129,6 +129,33 @@ class DatabaseWrapper:
             
         return response
     
+    def check_in(self, ticket_code):
+        cursor = self.connection.cursor(dictionary=True)
+        check_in = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        
+        try:
+            sql = "UPDATE etickets SET check_in = %s WHERE ticket_code = %s;"
+            cursor.execute(sql, [check_in, ticket_code])
+            self.connection.commit()
+            
+            if cursor.rowcount > 0:
+                response  = {
+                    "ticket_code": ticket_code,
+                    "check_in" : check_in,
+                }
+            else:
+                response  = {
+                    "error": "check in gagal"
+                }
+        except Error as e:
+            self.connection.rollback()
+            response = {
+                'error': e
+            }
+        
+        return response
+        
+    
     def __del__(self):
         self.connection.close()
         
