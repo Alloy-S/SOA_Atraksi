@@ -2,11 +2,17 @@ import json
 
 from nameko.rpc import RpcProxy
 from nameko.web.handlers import http
+from werkzeug.wrappers import Response
 
 
 class GatewayService:
     name = 'gateway'
-
+    header = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, DELETE",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true", 
+    }
     atraksi = RpcProxy('atraksi_service')
     
     @http('GET', '/api/atraksi')

@@ -7,6 +7,7 @@ from datetime import datetime
 import string
 import random
 import boto3
+from botocore.exceptions import NoCredentialsError, PartialCredentialsError, ClientError, EndpointConnectionError
 
 
 class DatabaseWrapper:
@@ -35,13 +36,27 @@ class DatabaseWrapper:
     
     # kalau eror ini di comment aja
     def get_atraksi_photo_s3(self):
-        response = self.s3.list_objects_v2(Bucket=self.BUCKET_NAME)
-        result = []
-        for obj in response['Contents']:
-            # print(obj)
-            key = obj['Key'].replace(" ", "+")
-            url = "https://{0}.s3.amazonaws.com/{1}".format(self.BUCKET_NAME, key)
-            result.append(url)
+        result = None
+        try:
+            response = self.s3.list_objects_v2(Bucket=self.BUCKET_NAME)
+            result = []
+            for obj in response['Contents']:
+                # print(obj)
+                key = obj['Key'].replace(" ", "+")
+                url = "https://{0}.s3.amazonaws.com/{1}".format(self.BUCKET_NAME, key)
+                result.append(url)
+        except NoCredentialsError:
+            result = {"error": "No AWS credentials were provided."}
+        except PartialCredentialsError:
+            result = {"error": "Incomplete AWS credentials provided."}
+        except EndpointConnectionError:
+            result = {"error": "Could not connect to the specified endpoint."}
+        except ClientError as e:
+            # Handle any client error thrown by boto3
+            result = {"error": str(e)}
+        except Exception as e:
+            # Catch any other exceptions
+            result = {"error": str(e)}
         return result
     # comment sampe sini
     
@@ -97,8 +112,8 @@ class DatabaseWrapper:
     def get_atraksi_paket_id(self, id_paket):
         cursor = self.connection.cursor(dictionary=True)
         paket = None
-        sql = "SELECT id AS paket_id, atraksi_id, type_id, title, deskripsi, fasilitas, cara_penukaran, syarat_dan_ketentuan, harga,kuota, is_refundable FROM pakets WHERE id={0}".format(id_paket)
-        cursor.execute(sql)
+        sql = "SELECT id AS paket_id, atraksi_id, type_id, title, deskripsi, fasilitas, cara_penukaran, syarat_dan_ketentuan, harga,kuota, is_refundable FROM pakets WHERE id= %s"
+        cursor.execute(sql, [id_paket])
         paket = cursor.fetchone()
         cursor.close()
         return paket
@@ -124,9 +139,9 @@ class DatabaseWrapper:
         ticket_code = self.generate_random_string()
         response = None
         try:
-            sql = "INSERT INTO etickets (booking_code, ticket_code, paket_id, jenis, created_at, valid_at, check_in) VALUES ('{0}', '{1}', {2}, '{3}', '{4}', '{5}', NULL);".format(booking_code, ticket_code, paket_id, jenis, created_at, valid_at)
+            sql = "INSERT INTO etickets (booking_code, ticket_code, paket_id, jenis, created_at, valid_at, check_in) VALUES (%s, %s, %s, %s, %s, %s, NULL);"
             # print(sql);
-            cursor.execute(sql)
+            cursor.execute(sql, [booking_code, ticket_code, paket_id, jenis, created_at, valid_at])
             self.connection.commit()
             
             response = {
@@ -142,7 +157,7 @@ class DatabaseWrapper:
             self.connection.rollback()
             response = {
                 'code': 400,
-                'response': e
+                'response': str(e)
             }
             
         return response
@@ -168,14 +183,10 @@ class DatabaseWrapper:
         except Error as e:
             self.connection.rollback()
             response = {
-                'error': e
+                'error': str(e)
             }
         
         return response
-        
-    
-    def __del__(self):
-        self.connection.close()
         
     def delete_eticket(self, eticket_id):
         cursor = self.connection.cursor(dictionary=True)
@@ -190,6 +201,9 @@ class DatabaseWrapper:
         finally:
             cursor.close()
         return result
+    
+    def __del__(self):
+        self.connection.close()
 
 
 
