@@ -31,9 +31,10 @@ class RoomService:
         return atraksi
     
     @rpc
-    def get_atraksi_tutup(self):
-        atraksi = self.database.get_atraksi_tutup()
+    def get_atraksi_tutup(self, tgls):
+        atraksi = self.database.get_atraksi_tutup(tgls)
         return atraksi
+    
     
     @rpc
     def get_atraksi_paket_id(self, id_paket):

@@ -2,6 +2,7 @@ import json
 
 from nameko.rpc import RpcProxy
 from nameko.web.handlers import http
+from requests import Response
 from werkzeug.wrappers import Response
 from nameko_cors import cors_http
 
@@ -37,11 +38,10 @@ class GatewayService:
         result = self.atraksi.get_atraksi_paket()
         return json.dumps(result)
     
-    @http('GET', '/api/atraksi/tgl')
-    def get_atraksi_tutup(self, request):
-        result = self.atraksi.get_atraksi_tutup()
+    @http('GET', '/api/atraksi/tutup/<string:tgls>')
+    def get_atraksi_tutup(self, request, tgls):
+        result = self.atraksi.get_atraksi_tutup(tgls)
         return json.dumps(result)
-
 
     @http('POST', '/api/eticket')
     def create_eticket(self, request):

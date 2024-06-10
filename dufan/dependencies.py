@@ -1,13 +1,13 @@
+import json
 from nameko.extensions import DependencyProvider
-
 import mysql.connector
 from mysql.connector import Error
 from mysql.connector import pooling
 from datetime import datetime
 import string
 import random
-import boto3
-from botocore.exceptions import NoCredentialsError, PartialCredentialsError, ClientError, EndpointConnectionError
+# import boto3
+# from botocore.exceptions import NoCredentialsError, PartialCredentialsError, ClientError, EndpointConnectionError
 
 
 class DatabaseWrapper:
@@ -15,9 +15,9 @@ class DatabaseWrapper:
     connection = None
     atraksi_id = 1
     # kalau eror ini di comment aja
-    BUCKET_NAME = 'soa-dufan'
-    s3 = boto3.client('s3')
-    # comment sampe sini
+    # BUCKET_NAME = 'soa-dufan'
+    # s3 = boto3.client('s3')
+    # # comment sampe sini
 
     def __init__(self, connection):
         self.connection = connection
@@ -35,29 +35,29 @@ class DatabaseWrapper:
         return result
     
     # kalau eror ini di comment aja
-    def get_atraksi_photo_s3(self):
-        result = None
-        try:
-            response = self.s3.list_objects_v2(Bucket=self.BUCKET_NAME)
-            result = []
-            for obj in response['Contents']:
-                # print(obj)
-                key = obj['Key'].replace(" ", "+")
-                url = "https://{0}.s3.amazonaws.com/{1}".format(self.BUCKET_NAME, key)
-                result.append(url)
-        except NoCredentialsError:
-            result = {"error": "No AWS credentials were provided."}
-        except PartialCredentialsError:
-            result = {"error": "Incomplete AWS credentials provided."}
-        except EndpointConnectionError:
-            result = {"error": "Could not connect to the specified endpoint."}
-        except ClientError as e:
-            # Handle any client error thrown by boto3
-            result = {"error": str(e)}
-        except Exception as e:
-            # Catch any other exceptions
-            result = {"error": str(e)}
-        return result
+    # def get_atraksi_photo_s3(self):
+    #     result = None
+    #     try:
+    #         response = self.s3.list_objects_v2(Bucket=self.BUCKET_NAME)
+    #         result = []
+    #         for obj in response['Contents']:
+    #             # print(obj)
+    #             key = obj['Key'].replace(" ", "+")
+    #             url = "https://{0}.s3.amazonaws.com/{1}".format(self.BUCKET_NAME, key)
+    #             result.append(url)
+    #     except NoCredentialsError:
+    #         result = {"error": "No AWS credentials were provided."}
+    #     except PartialCredentialsError:
+    #         result = {"error": "Incomplete AWS credentials provided."}
+    #     except EndpointConnectionError:
+    #         result = {"error": "Could not connect to the specified endpoint."}
+    #     except ClientError as e:
+    #         # Handle any client error thrown by boto3
+    #         result = {"error": str(e)}
+    #     except Exception as e:
+    #         # Catch any other exceptions
+    #         result = {"error": str(e)}
+    #     return result
     # comment sampe sini
     
     def get_ticket_type_id(self, type_id):
@@ -118,13 +118,29 @@ class DatabaseWrapper:
         cursor.close()
         return paket
     
-    def get_atraksi_tutup(self):
+    def get_atraksi_tutup(self, tgls):
         cursor = self.connection.cursor(dictionary=True)
-        sql =  "SELECT `tgl` FROM `tgl_tutups`"
-        rows = cursor.fetchall()
-        tutup = [row['tgl'] for row in rows]
+        result = None
+        sql = "SELECT tgl FROM tgl_tutups WHERE tgl = %s"
+        cursor.execute(sql, [tgls])
+
+        for row in cursor.fetchall():
+            print(f"Database date: {result}, Input date: {tgls}")
+            
+            result = row['tgl']
+            if isinstance(result, str):
+                result = datetime.strptime(result, '%Y-%m-%d').date()
+            if isinstance(tgls, str):
+                tgls = datetime.strptime(tgls, '%Y-%m-%d').date()
+                
+            if result == tgls:
+                return {"status": "Tutup"}
+
         cursor.close()
-        return tutup
+        return {"status": "Buka"}
+      
+    
+
     
     def generate_random_string(self, length=6):
         letters = string.ascii_uppercase + string.digits
