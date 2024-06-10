@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('provinsi_name');
             $table->string('kota');
             $table->string('kota_name');
-            $table->string('gps_location');
             $table->double('lowest_price')->default(0);
             $table->boolean('is_active')->default(false);
             $table->timestamps();

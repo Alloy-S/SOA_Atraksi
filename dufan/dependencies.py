@@ -1,8 +1,12 @@
+import json
 from nameko.extensions import DependencyProvider
 
 import mysql.connector
 from mysql.connector import Error
 from mysql.connector import pooling
+from datetime import datetime
+import string
+import random
 
 class DatabaseWrapper:
 
@@ -21,6 +25,16 @@ class DatabaseWrapper:
         for row in cursor.fetchall():
             data = row
             result.append(data)
+        cursor.close()
+        return result
+    
+    def get_ticket_type(self, type_id):
+        cursor = self.connection.cursor(dictionary=True)
+        result = None
+        # print(self.atraksi_id)
+        sql = "SELECT name FROM types WHERE id={0}".format(type_id)
+        cursor.execute(sql)
+        result = cursor.fetchone()
         cursor.close()
         return result
     
@@ -54,7 +68,7 @@ class DatabaseWrapper:
         cursor = self.connection.cursor(dictionary=True)
         result = {}
         paket = []
-        sql = "SELECT id AS paket_id, atraksi_id, type_id, title, deskripsi, fasilitas, cara_penukaran, syarat_dan_ketentuan, harga, harga_discount,kuota, masa_berlaku, is_refundable FROM pakets WHERE atraksi_id={0}".format(self.atraksi_id)
+        sql = "SELECT id AS paket_id, atraksi_id, type_id, title, deskripsi, fasilitas, cara_penukaran, syarat_dan_ketentuan, harga,kuota, is_refundable FROM pakets WHERE atraksi_id={0}".format(self.atraksi_id)
         cursor.execute(sql)
         for row in cursor.fetchall():
             data = row
@@ -63,25 +77,89 @@ class DatabaseWrapper:
         result['paket'] = paket
         return result
     
-    def get_atraksi_tutup(self):
+    def get_atraksi_paket_id(self, id_paket):
         cursor = self.connection.cursor(dictionary=True)
-        sql =  "SELECT `tgl` FROM `tgl_tutups`"
-        rows = cursor.fetchall()
-        tutup = [row['tgl'] for row in rows]
+        result = {}
+        paket = None
+        sql = "SELECT id AS paket_id, atraksi_id, type_id, title, deskripsi, fasilitas, cara_penukaran, syarat_dan_ketentuan, harga,kuota, is_refundable FROM pakets WHERE id={0}".format(id_paket)
+        cursor.execute(sql)
+        paket = cursor.fetchone()
         cursor.close()
-        return tutup
+        result['paket'] = paket
+        return result
     
-    def get_atraksi_paketdetail(self, id):
-        cursor = self.db.cursor(dictionary=True)
-        sql = "SELECT * FROM `pakets` WHERE `id` = %s"
-        cursor.execute(sql, (id,))
-        details = cursor.fetchone()
+    def get_atraksi_tutup(self, tgls):
+        cursor = self.connection.cursor(dictionary=True)
+        result = None
+        sql = "SELECT tgl FROM tgl_tutups WHERE tgl = %s"
+        cursor.execute(sql, [tgls])
+        for row in cursor.fetchall():
+            result = row['tgl']
+            print(result)
+            # if isinstance(result, str):
+            #     result = datetime.strptime(result, '%Y-%m-%d').date()
+            if result == tgls:
+                return {"status": "Tutup"}
+
         cursor.close()
-        return details
+        return {"status": "Buka"}
+      
     
+
+    
+    def generate_random_string(self, length=6):
+        letters = string.ascii_uppercase + string.digits
+        result = ''.join(random.choice(letters) for i in range(length))
+        # print(result)
+        return result
+    
+    def create_eticket(self, paket_id, jml_ticket, booking_code, jenis, tgl_booking):
+        cursor = self.connection.cursor(dictionary=True)
+        created_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        valid_at = tgl_booking
+        ticket_code = self.generate_random_string()
+        response = None
+        try:
+            sql = "INSERT INTO etickets (booking_code, ticket_code, paket_id, jenis, created_at, valid_at, check_in) VALUES ('{0}', '{1}', {2}, '{3}', '{4}', '{5}', NULL);".format(booking_code, ticket_code, paket_id, jenis, created_at, valid_at)
+            # print(sql);
+            cursor.execute(sql)
+            self.connection.commit()
+            
+            response = {
+                'ticket_code': ticket_code,
+                'booking_code': booking_code,
+                'paket_id': paket_id,
+                'jenis': jenis,
+                'created_at': created_at,
+                'valid_at': valid_at,
+            }
+        except mysql.connector.Error as e:
+            
+            self.connection.rollback()
+            response = {
+                'code': 400,
+                'response': e
+            }
+            
+        return response
     
     def __del__(self):
         self.connection.close()
+        
+    def delete_eticket(self, eticket_id):
+        cursor = self.connection.cursor(dictionary=True)
+        try:
+            sql = "DELETE FROM etickets WHERE id = %s"
+            cursor.execute(sql, (eticket_id,))
+            self.connection.commit()
+            result = cursor.rowcount
+        except Error as e:
+            print("Error while deleting e-ticket", e)
+            result = None
+        finally:
+            cursor.close()
+        return result
+
 
 
 class Database(DependencyProvider):

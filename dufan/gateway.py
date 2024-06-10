@@ -2,6 +2,7 @@ import json
 
 from nameko.rpc import RpcProxy
 from nameko.web.handlers import http
+from requests import Response
 
 
 class GatewayService:
@@ -14,25 +15,50 @@ class GatewayService:
         result = self.atraksi.get_atraksi_info()
         return json.dumps(result)
     
+    @http('GET', '/api/atraksi/paket/<int:id_paket>')
+    def get_atraksi_paket_id(self, request, id_paket):
+        result = self.atraksi.get_atraksi_paket_id(id_paket)
+        return json.dumps(result)
+    
     @http('GET', '/api/atraksi/paket')
     def get_atraksi_paket(self, request):
         result = self.atraksi.get_atraksi_paket()
         return json.dumps(result)
     
-    @http('GET', '/api/atraksi/tgl')
-    def get_atraksi_tutup(self, request):
-        result = self.atraksi.get_atraksi_tutup()
+    @http('GET', '/api/atraksi/tutup/<string:tgls>')
+    def get_atraksi_tutup(self, request, tgls):
+        result = self.atraksi.get_atraksi_tutup(tgls)
         return json.dumps(result)
-    
-    @http('GET', '/api/atraksi/paket/<int:id>')
-    def get_package_details(self, request, id):
-        package_details = self.package_rpc.get_package_details(id)
-        if package_details is None:
-            return json.dumps({'error': 'Package not found'}), 404, {'Content-Type': 'application/json'}
-        return json.dumps(package_details), 200, {'Content-Type': 'application/json'}
-    
 
+    @http('POST', '/api/eticket')
+    def create_eticket(self, request):
+        data = request.get_data(as_text=True)
+        data = json.loads(data)
+        paket_id = None
+        jml_ticket = None
+        booking_code = None
+        tgl_booking = None
+        try:
+            paket_id = data['paket_id']
+            jml_ticket = data['jml_ticket']
+            booking_code = data['booking_code']
+            tgl_booking = data['tgl_booking']
+        except:
+            return 400, "invalid format input"
+        
+        
+        
+        result = self.atraksi.create_eticket(paket_id, jml_ticket, booking_code, tgl_booking)
+        return json.dumps(result)
 
+    @http('DELETE', '/api/eticket/<int:eticket_id>')
+    def delete_eticket(self, request, eticket_id):
+        result = self.atraksi.delete_eticket(eticket_id)
+        if "error" in result:
+            return 400, json.dumps(result)
+        else:
+            return json.dumps(result)
+        
     # @http('GET', '/room')
     # def get_rooms(self, request):
     #     rooms = self.hotel_rpc.get_all_room()
