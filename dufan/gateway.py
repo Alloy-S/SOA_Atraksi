@@ -3,22 +3,29 @@ import json
 from nameko.rpc import RpcProxy
 from nameko.web.handlers import http
 from werkzeug.wrappers import Response
+from nameko_cors import cors_http
 
 
 class GatewayService:
     name = 'gateway'
     header = {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, DELETE",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        "Access-Control-Allow-Credentials": "true", 
+         "Access-Control-Allow-Methods": "*",
+         "Access-Control-Allow-Headers": "*",
+         
     }
     atraksi = RpcProxy('atraksi_service')
     
     @http('GET', '/api/atraksi')
     def get_atraksi_info(self, request):
         result = self.atraksi.get_atraksi_info()
-        return json.dumps(result)
+        # return json.dumps(result)
+        # response = Response(mimetype='application/json')
+        # response.data = json.dumps(result)
+        # response.headers.add('Access-Control-Allow-Origin', '*')
+        # response.headers.add('Access-Control-Allow-Methods', '*')
+        # return response
+        return (200, self.header, json.dumps(result))
     
     @http('GET', '/api/atraksi/paket/<int:id_paket>')
     def get_atraksi_paket_id(self, request, id_paket):

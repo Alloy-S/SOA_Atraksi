@@ -42,6 +42,8 @@ class DatabaseSeeder extends Seeder
             'provinsi_name' => 'Dufan',
             'kota' => 2,
             'kota_name' => 'Dufan',
+            'negara' => 'Indonesia',
+            'gps_location' => '-6.125649, 106.833638',
             'lowest_price' => 100000,
             'is_active' => 1,
             'created_at' => now(),

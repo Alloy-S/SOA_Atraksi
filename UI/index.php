@@ -1,7 +1,16 @@
 <?php
 
 
+$api_url = 'http://localhost:8000/api/atraksi';
 
+// Read JSON file
+// $json_data = file_get_contents($api_url);
+
+// // Decode JSON data into PHP array
+// $response_data = json_decode($json_data);
+
+// echo json_encode($response_data);
+// die;
 ?>
 
 
@@ -30,7 +39,11 @@
 </head>
 
 <body>
-    <div class="container mt-4">
+    <div id="loader" style="position: absolute;top:50%;left:50%;transform: translate(-50%, -50%)">
+        <img src="./Ellipsis@1x-1.0s-200px-200px.svg" alt="">
+    </div>
+
+    <div id="content" class="container mt-4 d-none">
         <!-- caraousel -->
         <div class="d-flex justify-content-center">
             <div id="carouselExampleIndicators" class="carousel slide caraousel-image">
@@ -288,44 +301,17 @@
         $(document).ready(function() {
             const cardContainer = $('#atraksi-container');
             $.ajax({
-                url: 'example_api.php',
+                url: 'http://localhost:8000/api/atraksi',
                 type: 'get',
                 success: function(data) {
                     data = JSON.parse(data);
                     console.log(data)
-                    data.jam_buka.forEach(function(element) {
-                        console.log(element);
-                        //             const card = `<div class="card" style="width: 18rem;">
-                        //     <div id="${element.atraksi.slug}" class="carousel slide">
-                        //         <div class="carousel-inner card-img-top" id="photos-${element.atraksi.slug}">
+                    $('#content').removeClass('d-none');
+                    $('#loader').hide();
+                    // data.jam_buka.forEach(function(element) {
+                    //     console.log(element);
 
-                        //         </div>
-                        //         <button class="carousel-control-prev" type="button" data-bs-target="#${element.atraksi.slug}" data-bs-slide="prev">
-                        //             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        //             <span class="visually-hidden">Previous</span>
-                        //         </button>
-                        //         <button class="carousel-control-next" type="button" data-bs-target="#${element.atraksi.slug}" data-bs-slide="next">
-                        //             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        //             <span class="visually-hidden">Next</span>
-                        //         </button>
-                        //     </div>
-                        //     <div class="card-body">
-                        //         <h5 class="card-title">${element.atraksi.title}</h5>
-                        //         <div class="card-text">${element.atraksi.deskripsi}</div>
-                        //     </div>
-                        // </div>`;
-
-                        //             cardContainer.append(card);
-                        //             const photos = element.atraksi.photo
-                        //             const photosContainer = $(`#photos-${element.atraksi.slug}`);
-                        //             photos.forEach((photo, index) => {
-                        //                 const content = ` <div class="carousel-item active">
-                        //                 <img src="http://127.0.0.1:8000/${photo.image}" class="card-img-top" alt="...">
-                        //             </div>`;
-                        //                 photosContainer.append(content);
-                        //             });
-                        //             console.log('append');
-                    });
+                    // });
 
                 }
             });

@@ -18,10 +18,13 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->text('info_penting');
             $table->text('highlight');
+            $table->string('alamat');
             $table->string('provinsi');
             $table->string('provinsi_name');
             $table->string('kota');
             $table->string('kota_name');
+            $table->string('negara');
+            $table->string('gps_location');
             $table->double('lowest_price')->default(0);
             $table->boolean('is_active')->default(false);
             $table->timestamps();
