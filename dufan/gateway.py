@@ -3,11 +3,17 @@ import json
 from nameko.rpc import RpcProxy
 from nameko.web.handlers import http
 from requests import Response
+from werkzeug.wrappers import Response
 
 
 class GatewayService:
     name = 'gateway'
-
+    header = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, DELETE",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true", 
+    }
     atraksi = RpcProxy('atraksi_service')
     
     @http('GET', '/api/atraksi')
@@ -46,14 +52,20 @@ class GatewayService:
         except:
             return 400, "invalid format input"
         
-        
-        
         result = self.atraksi.create_eticket(paket_id, jml_ticket, booking_code, tgl_booking)
         return json.dumps(result)
+    
+    @http('PUT', '/api/eticket/<string:ticket_code>')
+    def check_in(self, request, ticket_code):
+        print(ticket_code)
+        response = self.atraksi.check_in(ticket_code)
+        return json.dumps(response)
+        
 
     @http('DELETE', '/api/eticket/<int:eticket_id>')
     def delete_eticket(self, request, eticket_id):
         result = self.atraksi.delete_eticket(eticket_id)
+        print(result)
         if "error" in result:
             return 400, json.dumps(result)
         else:

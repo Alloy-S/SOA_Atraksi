@@ -14,7 +14,9 @@ class RoomService:
         atraksi = self.database.get_atraksi_info()
         # print(type(atraksi))
         if atraksi != None:
-            atraksi['photo'] = self.database.get_atraksi_photo()
+            atraksi['photo'] = self.database.get_atraksi_photo_s3()
+            # kalo eror pake yang bawah yg atas itu connect ke aws
+            # atraksi['photo'] = self.database.get_atraksi_photo()
             atraksi['jam_buka'] = self.database.get_atraksi_jam_buka()
             return atraksi
         else: 
@@ -36,17 +38,23 @@ class RoomService:
     
     @rpc
     def get_atraksi_paket_id(self, id_paket):
-        atraksi = self.database.get_atraksi_paket_id(id_paket)
+        atraksi = self.database.get_atraksi_paket(id_paket)
         return atraksi
         
+    @rpc
     def create_eticket(self, paket_id, jml_ticket, booking_code, tgl_booking):
-        jenis = 'regular'
-        paket = self.database.get_atraksi_paket()
+        # jenis = 'regular'
+        paket = self.database.get_atraksi_paket_id(paket_id)
+        type = self.database.get_ticket_type_id(paket['type_id'])
         data = []
         for i in range(jml_ticket):
-            data.append(self.database.create_eticket(paket_id, jml_ticket, booking_code, jenis, tgl_booking))
-        # print(type(atraksi))
+            data.append(self.database.create_eticket(paket_id, jml_ticket, booking_code, type['name'], tgl_booking))
         return data
+    
+    @rpc
+    def check_in(self, ticket_code):
+        ticket = self.database.check_in(ticket_code)
+        return ticket
 
     @rpc
     def delete_eticket(self, eticket_id):
