@@ -2,6 +2,7 @@ from nameko.rpc import rpc
 
 import dependencies
 import json
+from datetime import datetime
 
 class RoomService:
 
@@ -15,6 +16,7 @@ class RoomService:
         # print(type(atraksi))
         if atraksi != None:
             atraksi['photo'] = self.database.get_atraksi_photo_s3()
+            # atraksi['type_name'] = self.database.get_ticket_type_id(atraksi['type_id'])
             # kalo eror pake yang bawah yg atas itu connect ke aws
             # atraksi['photo'] = self.database.get_atraksi_photo()
             atraksi['jam_buka'] = self.database.get_atraksi_jam_buka()
@@ -38,82 +40,53 @@ class RoomService:
     
     @rpc
     def get_atraksi_paket_id(self, id_paket):
-        atraksi = self.database.get_atraksi_paket(id_paket)
+        atraksi = self.database.get_atraksi_paket_id(id_paket)
+        atraksi['type_name'] = self.database.get_ticket_type_id(atraksi['type_id'])
         return atraksi
         
     @rpc
     def create_eticket(self, paket_id, jml_ticket, booking_code, tgl_booking):
-        # jenis = 'regular'
+        try:
+            booking_date = datetime.strptime(tgl_booking, "%Y-%m-%d").date()
+        except ValueError:
+            return {"error": "Invalid date format. Use YYYY-MM-DD format."}
+        
+        if booking_date < datetime.now().date():
+            return {"error": "Booking date cannot be in the past."}
+        
         paket = self.database.get_atraksi_paket_id(paket_id)
-        type = self.database.get_ticket_type_id(paket['type_id'])
+        type_ticket = self.database.get_ticket_type_id(paket['type_id'])
         data = []
-        for i in range(jml_ticket):
-            data.append(self.database.create_eticket(paket_id, jml_ticket, booking_code, type['name'], tgl_booking))
+
+        for i in range(int(jml_ticket)):
+            data.append(self.database.create_eticket(paket_id, jml_ticket, booking_code, type_ticket, tgl_booking))
         return data
     
     @rpc
     def check_in(self, ticket_code):
+        ticket = self.database.get_eticket_detail(ticket_code)
+        if ticket['check_in'] != None:
+            return {"error": "ticket sudah digunakan"}
+        ticket_date = ticket['valid_at']
+        now = datetime.now().date()
+        
+        if now < ticket_date or now > ticket_date:
+            return {"error": "Check in hanya bisa di hari yang sama"}
+        
         ticket = self.database.check_in(ticket_code)
         return ticket
 
     @rpc
-    def delete_eticket(self, eticket_id):
-        return self.database.delete_eticket(eticket_id)
-    
-    # @rpc
-    # def get_all_room_type(self):
-    #     room_types = self.database.get_all_room_type()
-    #     return room_types
+    def delete_eticket(self, ticket_code):
+        result = self.database.delete_eticket(ticket_code)
+        response = None
+        if result == 1 :
+            response = {
+            "status": "Berhasil Dihapus"
+            } 
+        else:
+            response = {
+            "status": "Gagal dihapus"
+            }     
+        return response
 
-#     @rpc
-#     def get_all_room(self):
-#         rooms = self.database.get_all_room()
-#         return rooms
-
-#     @rpc
-#     def get_room_by_num(self, num):
-#         room = self.database.get_room_by_num(num)
-#         return room
-
-# # Method to add a room
-#     @rpc
-#     def add_room(self, room_num, room_type):
-#         existRoom = self.database.get_room_by_num(room_num)
-#         if existRoom != None:
-#             return {
-#                 'code': 400,
-#                 'response': "Room sudah ada"
-#             }
-#         validType = self.database.check_room_type(room_type)
-#         if validType['code'] != 200 :
-#             return validType
-        
-#         room = self.database.add_room(room_num, room_type)
-#         return room
-
-# # Method to change a room's status (0 to 1, or vice versa)
-#     @rpc
-#     def change_room_status(self, room_num):
-#         room = self.database.get_room_by_num(room_num)
-#         if room == None:
-#             return {
-#                 'code': 404,
-#                 'response': "room tidak ditemukan"
-#             }
-#         response = self.database.change_room_status(room_num, room['status'])
-        
-#         return response  
-
-# # Method to delete a room
-#     @rpc
-#     def delete_room(self, room_num):
-#         existRoom = self.database.get_room_by_num(room_num)
-#         if existRoom == None:
-#             return {
-#                 'code': 400,
-#                 'response': "room tidak ada"
-#             }
-#         response = self.database.delete_room(room_num)
-#         return response
-
-# Notes: you may replace room_num with id

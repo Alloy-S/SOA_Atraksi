@@ -79,19 +79,19 @@ $api_url = 'http://localhost:8000/api/atraksi';
 
             <ul class="nav nav-underline sticky-top bg-body-tertiary">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Ringkasan</a>
+                    <a class="nav-link text-dark navjs active ringkasan" href="#">Ringkasan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Highlight</a>
+                    <a class="nav-link text-dark navjs highlight" href="#">Highlight</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Paket</a>
+                    <a class="nav-link text-dark navjs paket" href="#">Paket</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Review</a>
+                    <a class="nav-link text-dark navjs review" href="#">Review</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Lokasi</a>
+                    <a class="nav-link text-dark navjs lokasi" href="#">Lokasi</a>
                 </li>
 
             </ul>
@@ -99,146 +99,156 @@ $api_url = 'http://localhost:8000/api/atraksi';
 
 
             <div>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h1>Tiket Dunia Fantasi </h1>
+                <section id="ringkasan">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h1 class="mb-5" id="title">Tiket Dunia Fantasi </h1>
+                            <div class="mb-3">
+                                <a href="" class="text-decoration-none text-dark" id="alamat"><i class="bi bi-pin-map-fill"></i> Jalan Lodan Timur, RW.10, Ancol, North Jakarta City, Jakarta, Indonesia, Jakarta Utara, Jakarta, Indonesia <i class="bi bi-chevron-right"></i></a>
+                            </div>
+                            <div class="mb-4">
+                                <a href="" class="text-decoration-none text-dark" id="jam-buka" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-clock-fill"></i> Buka &#x25CF Sabtu &#x25CF 10:00-20:00 <i class="bi bi-chevron-right"></i></a>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="m-0">Mulai dari</p>
+                            <h3><span class="text-danger" id="lowest-price">IDR 150.000</span></h3>
+                            <button class="btn btn-primary">Lihat Paket</button>
+                        </div>
                     </div>
-                    <div>
-                        <p class="m-0">Mulai dari</p>
-                        <h3><span class="text-danger">IDR 150.000</span></h3>
-                        <button class="btn btn-primary">Lihat Paket</button>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <a href="" class="text-decoration-none text-dark"><i class="bi bi-pin-map-fill"></i> Jalan Lodan Timur, RW.10, Ancol, North Jakarta City, Jakarta, Indonesia, Jakarta Utara, Jakarta, Indonesia <i class="bi bi-chevron-right"></i></a>
-                </div>
-                <div class="mb-4">
-                    <a href="" class="text-decoration-none text-dark"><i class="bi bi-clock-fill"></i> Buka &#x25CF Sabtu &#x25CF 10:00-20:00 <i class="bi bi-chevron-right"></i></a>
-                </div>
+                </section>
 
-                <div class="card mb-4 infopenting">
-                    <div class="card-body ">
-                        <h5 class="card-title">Info Penting & Highlight</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                <section id="highlight">
+                    <div class="card mb-4 infopenting">
+                        <div class="card-body ">
+                            <h5 class="card-title">Info Penting & Highlight</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
 
-                        <a href="#" class="card-link text-decoration-none fw-bolder">Baca Selengkapnya</a>
+                            <a href="#" class="card-link text-decoration-none fw-bolder">Baca Selengkapnya</a>
+                        </div>
                     </div>
-                </div>
+                </section>
                 <hr>
 
-                <div class="row">
-                    <div class="col-9">
-                        <h3 class="mt-5">Paket</h3>
-                        <p class="mb-4">Cek Ketersediaan paket</p>
-                        <div class="card infopenting m-4">
-                            <div class="m-4 mt-0">
-                                <!-- card jenis paket -->
-                                <div class="card mt-3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Reguler Weekday Dufan (belum termasuk tiket Ancol)</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                        <hr>
-                                        <div class="d-flex justify-content-between">
-                                            <p class="text-danger fw-bold fs-4 m-0">IDR 100.000</p>
-                                            <a href="#" class="btn btn-primary ">Pilih Tiker</a>
+                <section id="paket">
+                    <div class="row">
+                        <div class="col-9 col-lg-12">
+                            <h3 class="mt-5">Paket</h3>
+                            <p class="mb-4">Cek Ketersediaan paket</p>
+                            <div class="card infopenting m-4">
+                                <div class="m-4 mt-0" id="paket-container">
+                                    <!-- card jenis paket -->
+                                    <div class="card mt-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Reguler Weekday Dufan (belum termasuk tiket Ancol)</h5>
+                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <hr>
+                                            <div class="d-flex justify-content-between">
+                                                <p class="text-danger fw-bold fs-4 m-0">IDR 100.000</p>
+                                                <a href="#" class="btn btn-primary ">Pilih Tiker</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card mt-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Reguler Weekday Dufan (belum termasuk tiket Ancol)</h5>
+                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <hr>
+                                            <div class="d-flex justify-content-between">
+                                                <p class="text-danger fw-bold fs-4 m-0">IDR 100.000</p>
+                                                <a href="#" class="btn btn-primary ">Pilih Tiker</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card mt-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Reguler Weekday Dufan (belum termasuk tiket Ancol)</h5>
+                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <hr>
+                                            <div class="d-flex justify-content-between">
+                                                <p class="text-danger fw-bold fs-4 m-0">IDR 100.000</p>
+                                                <a href="#" class="btn btn-primary ">Pilih Tiker</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="card mt-3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Reguler Weekday Dufan (belum termasuk tiket Ancol)</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                        <hr>
-                                        <div class="d-flex justify-content-between">
-                                            <p class="text-danger fw-bold fs-4 m-0">IDR 100.000</p>
-                                            <a href="#" class="btn btn-primary ">Pilih Tiker</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card mt-3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Reguler Weekday Dufan (belum termasuk tiket Ancol)</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                        <hr>
-                                        <div class="d-flex justify-content-between">
-                                            <p class="text-danger fw-bold fs-4 m-0">IDR 100.000</p>
-                                            <a href="#" class="btn btn-primary ">Pilih Tiker</a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-3">
+                        <div class="col-3">
 
+                        </div>
                     </div>
-                </div>
+                </section>
 
                 <hr>
 
-                <div class="mt-3">
-                    <h3>Review</h3>
-                    <h1>4,4<span class="fs-4">/5</span></h1>
-                    <div class="d-flex flex-wrap ">
-                        <div class="card mb-3 w-25 me-2">
-                            <div class="card-body ">
-                                <h5 class="card-title">Info Penting & Highlight</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                <section id="review">
+                    <div class="mt-3">
+                        <h3>Review</h3>
+                        <h1>4,4<span class="fs-4">/5</span></h1>
+                        <div class="d-flex flex-wrap ">
+                            <div class="card mb-3 w-25 me-2">
+                                <div class="card-body ">
+                                    <h5 class="card-title">Info Penting & Highlight</h5>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="card mb-3 w-25 me-2">
-                            <div class="card-body ">
-                                <h5 class="card-title">Info Penting & Highlight</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                            <div class="card mb-3 w-25 me-2">
+                                <div class="card-body ">
+                                    <h5 class="card-title">Info Penting & Highlight</h5>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="card mb-3 w-25 me-2">
-                            <div class="card-body ">
-                                <h5 class="card-title">Info Penting & Highlight</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                            <div class="card mb-3 w-25 me-2">
+                                <div class="card-body ">
+                                    <h5 class="card-title">Info Penting & Highlight</h5>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
+                </section>
 
                 <hr>
 
-                <div class="mt-4">
-                    <h3>Lokasi</h3>
-                    <div class="mapouter w-100">
-                        <div class="gmap_canvas">
-                            <iframe height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=-6.126385%2C+106.834075&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                            <a href="https://www.analarmclock.com"></a><br><a href="https://www.onclock.net"></a><br>
-                            <style>
-                                .mapouter {
-                                    position: relative;
-                                    text-align: right;
-                                    height: 560px;
-                                    width: 820px;
-                                }
+                <section id="lokasi">
+                    <div class="mt-4">
+                        <h3>Lokasi</h3>
+                        <div class="mapouter w-100">
+                            <div class="gmap_canvas">
+                                <iframe height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=-6.126385%2C+106.834075&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                <a href="https://www.analarmclock.com"></a><br><a href="https://www.onclock.net"></a><br>
+                                <style>
+                                    .mapouter {
+                                        position: relative;
+                                        text-align: right;
+                                        height: 560px;
+                                        width: 820px;
+                                    }
 
-                                .gmap_canvas {
-                                    overflow: hidden;
-                                    background: none !important;
-                                    height: 560px;
-                                    width: auto;
-                                }
+                                    .gmap_canvas {
+                                        overflow: hidden;
+                                        background: none !important;
+                                        height: 560px;
+                                        width: auto;
+                                    }
 
-                                #gmap_canvas {
-                                    overflow: hidden;
-                                    background: none !important;
-                                    width: 100%;
-                                }
-                            </style>
+                                    #gmap_canvas {
+                                        overflow: hidden;
+                                        background: none !important;
+                                        width: 100%;
+                                    }
+                                </style>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
                 <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-1 border-top">
                     <div class="col mb-3">
@@ -292,6 +302,24 @@ $api_url = 'http://localhost:8000/api/atraksi';
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Jam Buka</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-jam-buka">
+                    <ul id="list-jam-buka">
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -300,6 +328,13 @@ $api_url = 'http://localhost:8000/api/atraksi';
     <script>
         $(document).ready(function() {
             const cardContainer = $('#atraksi-container');
+            var days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+
+            var currentDate = new Date();
+
+            var dayIndex = currentDate.getDay();
+
+            var dayName = days[dayIndex];
             $.ajax({
                 url: 'http://localhost:8000/api/atraksi',
                 type: 'get',
@@ -308,13 +343,44 @@ $api_url = 'http://localhost:8000/api/atraksi';
                     console.log(data)
                     $('#content').removeClass('d-none');
                     $('#loader').hide();
-                    // data.jam_buka.forEach(function(element) {
-                    //     console.log(element);
+                    $('#title').text(data.title);
+                    $('#alamat').text(data.alamat);
+                    $('#lowest-price').text("IDR " + data.lowest_price.toLocaleString());
+                    // $('#title').text("IDR ");
+                    data.jam_buka.forEach((element, index) => {
+                        console.log(element);
+                        if (element.hari.toLowerCase() === dayName.toLowerCase()) {
+                            $("#list-jam-buka").append('<li class="fw-bold mb-1">' + element.hari + ' ' + element.waktu + '</li>')
+                        } else {
+                            $("#list-jam-buka").append('<li class="mb-1">' + element.hari + ' ' + element.waktu + '</li>')
+                        }
+                        
+                    });
 
-                    // });
 
                 }
             });
+
+            const sections = document.querySelectorAll("section");
+            const navLi = document.querySelectorAll(".navjs");
+            console.log(navLi)
+            window.onscroll = () => {
+                var current = "";
+
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 60) {
+                        current = section.getAttribute("id");
+                    }
+                });
+
+                navLi.forEach((li) => {
+                    li.classList.remove("active");
+                    if (li.classList.contains(current)) {
+                        li.classList.add("active");
+                    }
+                });
+            };
         });
     </script>
 </body>

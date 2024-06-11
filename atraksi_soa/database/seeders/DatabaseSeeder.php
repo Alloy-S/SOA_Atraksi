@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             'deskripsi' => 'Dufan',
             'info_penting' => 'Dufan',
             'highlight' => 'Dufan',
+            'alamat' => 'Jl. Lodan Timur No.7, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430',
             'provinsi' => 2,
             'provinsi_name' => 'Dufan',
             'kota' => 2,
