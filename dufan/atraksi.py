@@ -15,7 +15,7 @@ class RoomService:
         atraksi = self.database.get_atraksi_info()
         # print(type(atraksi))
         if atraksi != None:
-            atraksi['photo'] = self.database.get_atraksi_photo_s3()
+            # atraksi['photo'] = self.database.get_atraksi_photo_s3()
             # atraksi['type_name'] = self.database.get_ticket_type_id(atraksi['type_id'])
             # kalo eror pake yang bawah yg atas itu connect ke aws
             # atraksi['photo'] = self.database.get_atraksi_photo()
@@ -29,6 +29,8 @@ class RoomService:
     @rpc
     def get_atraksi_paket(self):
         atraksi = self.database.get_atraksi_paket()
+        tgl = datetime.now().strftime('%Y-%m-%d')
+        atraksi['status'] = self.database.get_atraksi_tutup(tgl)['status']
         # print(type(atraksi))
         return atraksi
     
@@ -42,6 +44,8 @@ class RoomService:
     def get_atraksi_paket_id(self, id_paket):
         atraksi = self.database.get_atraksi_paket_id(id_paket)
         atraksi['type_name'] = self.database.get_ticket_type_id(atraksi['type_id'])
+        tgl = datetime.now().strftime('%Y-%m-%d')
+        atraksi['status'] = self.database.get_atraksi_tutup(tgl)['status']
         return atraksi
         
     @rpc

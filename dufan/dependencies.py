@@ -85,7 +85,7 @@ class DatabaseWrapper:
     def get_atraksi_info(self):
         cursor = self.connection.cursor(dictionary=True)
         result = None
-        sql = "SELECT id AS atraksi_id, title, slug, deskripsi, info_penting, highlight, provinsi, kota, lowest_price, is_active FROM atraksis WHERE id={0} AND is_active=true".format(self.atraksi_id)
+        sql = "SELECT id AS atraksi_id, title, slug, deskripsi, info_penting, highlight, alamat, provinsi, provinsi_name, kota, kota_name, gps_location, lowest_price, is_active FROM atraksis WHERE id={0} AND is_active=true".format(self.atraksi_id)
         # print(sql)
         cursor.execute(sql)
         for row in cursor.fetchall():
