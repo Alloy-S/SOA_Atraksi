@@ -94,12 +94,12 @@ $api_url = 'http://localhost:8000/api/atraksi';
         <div class="d-flex justify-content-center">
             <div id="carouselExampleIndicators" class="carousel slide caraousel-image">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
+                <div class="carousel-inner" id="atraksi-img">
+                    <!-- <div class="carousel-item active">
                         <img src="./download.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
@@ -107,7 +107,7 @@ $api_url = 'http://localhost:8000/api/atraksi';
                     </div>
                     <div class="carousel-item">
                         <img src="./Tiket Dunia Fantasi di Jakarta.jpg" class="d-block w-100" alt="...">
-                    </div>
+                    </div> -->
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -148,17 +148,20 @@ $api_url = 'http://localhost:8000/api/atraksi';
                 <section id="ringkasan">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <h1 class="mb-5" id="title">Tiket Dunia Fantasi </h1>
+                            <h1 class="mb-5" id="title">Loading... </h1>
                             <div class="mb-3">
                                 <a href="#lokasi" class="text-decoration-none text-dark" id="alamat"></a>
                             </div>
                             <div class="mb-4">
-                                <a href="" class="text-decoration-none text-dark" id="jam-buka" type="button" data-bs-toggle="modal" data-bs-target="#jamBuka"><i class="bi bi-clock-fill"></i> Buka &#x25CF Sabtu &#x25CF 10:00-20:00 <i class="bi bi-chevron-right"></i></a>
+                                <a href="" class="text-decoration-none text-dark" id="jam-buka" type="button" data-bs-toggle="modal" data-bs-target="#jamBuka">
+                                    <!-- <i class="bi bi-clock-fill"></i> Buka &#x25CF Sabtu &#x25CF 10:00-20:00 <i class="bi bi-chevron-right"></i> -->
+                                     Loading...
+                                </a>
                             </div>
                         </div>
                         <div>
                             <p class="m-0">Mulai dari</p>
-                            <h3><span class="text-danger" id="lowest-price">IDR 150.000</span></h3>
+                            <h3><span class="text-danger" id="lowest-price">Loading...</span></h3>
                             <a class="btn btn-primary" href="#paket">Lihat Paket</a>
                         </div>
                     </div>
@@ -168,7 +171,7 @@ $api_url = 'http://localhost:8000/api/atraksi';
                     <div class="card mb-4 infopenting">
                         <div class="card-body ">
                             <h5 class="card-title">Info Penting & Highlight</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                            <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
 
                             <a href="" class="card-link text-decoration-none fw-bolder" type="button" data-bs-toggle="modal" data-bs-target="#highlight-modal">Baca Selengkapnya</a>
                         </div>

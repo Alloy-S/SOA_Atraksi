@@ -175,9 +175,30 @@ $(document).ready(function () {
             data = JSON.parse(data);
             console.log(data)
             $('#content').removeClass('d-none');
-            $('#loader').hide();
+            var imgContainer = $('#atraksi-img');
+            var indicators = $('.carousel-indicators');
+            // var inner = $('.carousel-inner');
+            data.photo.forEach((element, index) => {
+                var indicator = $('<button>')
+                    .attr('type', 'button')
+                    .attr('data-bs-target', '#carouselExampleIndicators')
+                    .attr('data-bs-slide-to', index)
+                    .attr('aria-label', 'Slide ' + (index + 1));
+                if (index === 0) {
+                    indicator.addClass('active');
+                }
+                indicators.append(indicator);
+
+                var item = $('<div>').addClass('carousel-item');
+                if (index === 0) {
+                    item.addClass('active');
+                }
+                var img = $('<img>').addClass('d-block w-100').attr('src', data.photo[index]);
+                item.append(img);
+                imgContainer.append(item);
+            });
             $('#title').text(data.title);
-            $('#alamat').append(`<i class="bi bi-pin-map-fill"> `+data.alamat+`<i class="bi bi-chevron-right"></i>`);
+            $('#alamat').append(`<i class="bi bi-pin-map-fill"> ` + data.alamat + `<i class="bi bi-chevron-right"></i>`);
             $('#info-penting-content').append(data.info_penting);
             $('#highlight-content').append(data.highlight);
             $('#lowest-price').text("IDR " + data.lowest_price.toLocaleString());
@@ -191,11 +212,14 @@ $(document).ready(function () {
             data.jam_buka.forEach((element, index) => {
                 console.log(element);
                 if (element.hari.toLowerCase() === dayName.toLowerCase()) {
-                    $("#list-jam-buka").append('<li class="fw-bold mb-1">' + element.hari + ' ' + element.waktu + '</li>')
+                    $("#list-jam-buka").append('<li class="fw-bold mb-1" >' + element.hari + ' ' + element.waktu + '</li>');
+                    $('#jam-buka').append(`<i class="bi bi-clock-fill"></i> ${data.status} &#x25CF ${element.hari} &#x25CF ${element.waktu} <i class="bi bi-chevron-right"></i>`);
+
                 } else {
                     $("#list-jam-buka").append('<li class="mb-1">' + element.hari + ' ' + element.waktu + '</li>')
                 }
             });
+            $('#loader').hide();
         }
     });
 
