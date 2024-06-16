@@ -31,12 +31,6 @@ class GatewayService:
     @http('GET', '/api/atraksi')
     def get_atraksi_info(self, request):
         result = self.atraksi.get_atraksi_info()
-        # return json.dumps(result)
-        # response = Response(mimetype='application/json')
-        # response.data = json.dumps(result)
-        # response.headers.add('Access-Control-Allow-Origin', '*')
-        # response.headers.add('Access-Control-Allow-Methods', '*')
-        # return response
         return (200, self.header, json.dumps(result))
     
     @http('GET', '/api/atraksi/paket/<int:id_paket>')
@@ -60,7 +54,7 @@ class GatewayService:
         data = json.loads(data)
         token_data = self.verify_token(data['_token'])
         if 'error' in token_data:
-            return (200, self.header, json.dumps(token_data))
+            return (401, self.header, json.dumps(token_data))
         
         paket_id = None
         jml_ticket = None

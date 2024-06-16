@@ -34,7 +34,7 @@ $(document).ready(function () {
         }
     });
     $('#paket-filter-reset').hide();
-    const cardContainer = $('#atraksi-container');
+    // const cardContainer = $('#atraksi-container');
     var days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
     const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
         "Juli", "Agustus", "September", "Oktober", "November", "Desember"
@@ -202,6 +202,7 @@ $(document).ready(function () {
             $('#info-penting-content').append(data.info_penting);
             $('#highlight-content').append(data.highlight);
             $('#lowest-price').text("IDR " + data.lowest_price.toLocaleString());
+            $('#description-content').append(data.deskripsi)
             var gps = data.gps_location.split(", ")
             const mapSrc = `https://maps.google.com/maps?q=${gps[0]},${gps[1]}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 

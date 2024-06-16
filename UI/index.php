@@ -155,7 +155,7 @@ $api_url = 'http://localhost:8000/api/atraksi';
                             <div class="mb-4">
                                 <a href="" class="text-decoration-none text-dark" id="jam-buka" type="button" data-bs-toggle="modal" data-bs-target="#jamBuka">
                                     <!-- <i class="bi bi-clock-fill"></i> Buka &#x25CF Sabtu &#x25CF 10:00-20:00 <i class="bi bi-chevron-right"></i> -->
-                                     Loading...
+
                                 </a>
                             </div>
                         </div>
@@ -248,6 +248,13 @@ $api_url = 'http://localhost:8000/api/atraksi';
 
                 <hr>
 
+                <section>
+                    <div class="mt-4">
+                        <h3>Description</h3>
+                        <div id="description-content"></div>
+                    </div>
+                </section>
+                <hr>
                 <section id="review">
                     <div class="mt-3">
                         <h3>Review</h3>

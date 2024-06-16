@@ -125,7 +125,7 @@ class DatabaseWrapper:
         cursor.execute(sql, [tgls])
 
         for row in cursor.fetchall():
-            print(f"Database date: {result}, Input date: {tgls}")
+            # print(f"Database date: {result}, Input date: {tgls}")
             
             result = row['tgl']
             if isinstance(result, str):
