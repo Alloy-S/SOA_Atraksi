@@ -4,7 +4,6 @@ from nameko.rpc import RpcProxy
 from nameko.web.handlers import http
 from requests import Response
 from werkzeug.wrappers import Response
-from nameko_cors import cors_http
 
 
 class GatewayService:
