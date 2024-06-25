@@ -82,6 +82,18 @@ class DatabaseWrapper:
         cursor.close()
         return result
     
+    def get_eticket_detail(self, booking_code):
+        cursor = self.connection.cursor(dictionary=True)
+        result = []
+        # print(self.atraksi_id)
+        sql = "SELECT * FROM etickets WHERE booking_code=%s"
+        cursor.execute(sql, (booking_code,))
+        for row in cursor.fetchall():
+            data = row
+            result.append(data)
+        cursor.close()
+        return result
+    
     def get_atraksi_info(self):
         cursor = self.connection.cursor(dictionary=True)
         result = None

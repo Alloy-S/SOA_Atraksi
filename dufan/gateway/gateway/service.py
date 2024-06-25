@@ -46,7 +46,13 @@ class GatewayService:
     def get_atraksi_tutup(self, request, tgls):
         result = self.atraksi.get_atraksi_tutup(tgls)
         return (200, self.header, json.dumps(result))
-
+    
+    @http('GET', '/api/eticket/<string:booking_code')
+    def eticket_detail(self, request, booking_code):
+        result = self.atraksi.eticket_detail(booking_code)
+        return (200, self.header, json.dumps(result))
+    
+        
     @http('POST', '/api/eticket')
     def create_eticket(self, request):
         data = request.get_data(as_text=True)

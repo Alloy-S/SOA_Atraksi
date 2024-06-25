@@ -43,6 +43,12 @@ class RoomService:
     
     
     @rpc
+    def eticket_detail(self, booking_code):
+        etickets = self.database.get_eticket_detail(booking_code)
+        return etickets
+    
+    
+    @rpc
     def get_atraksi_paket_id(self, id_paket):
         atraksi = self.database.get_atraksi_paket_id(id_paket)
         atraksi['type_name'] = self.database.get_ticket_type_id(atraksi['type_id'])
