@@ -44,7 +44,7 @@ class RoomService:
     
     @rpc
     def eticket_detail(self, booking_code):
-        etickets = self.database.get_eticket_detail(booking_code)
+        etickets = self.database.get_eticket_by_booking_code(booking_code)
         return etickets
     
     
