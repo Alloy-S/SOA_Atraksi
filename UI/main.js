@@ -23,26 +23,26 @@ $(document).ready(function () {
             try {
                 var imgContainer = $('#atraksi-img');
                 var indicators = $('.carousel-indicators');
-                // var inner = $('.carousel-inner');
-                // data.photo.forEach((element, index) => {
-                //     var indicator = $('<button>')
-                //         .attr('type', 'button')
-                //         .attr('data-bs-target', '#carouselExampleIndicators')
-                //         .attr('data-bs-slide-to', index)
-                //         .attr('aria-label', 'Slide ' + (index + 1));
-                //     if (index === 0) {
-                //         indicator.addClass('active');
-                //     }
-                //     indicators.append(indicator);
+                var inner = $('.carousel-inner');
+                data.photo.forEach((element, index) => {
+                    var indicator = $('<button>')
+                        .attr('type', 'button')
+                        .attr('data-bs-target', '#carouselExampleIndicators')
+                        .attr('data-bs-slide-to', index)
+                        .attr('aria-label', 'Slide ' + (index + 1));
+                    if (index === 0) {
+                        indicator.addClass('active');
+                    }
+                    indicators.append(indicator);
 
-                //     var item = $('<div>').addClass('carousel-item');
-                //     if (index === 0) {
-                //         item.addClass('active');
-                //     }
-                //     var img = $('<img>').addClass('d-block w-100').attr('src', data.photo[index]);
-                //     item.append(img);
-                //     imgContainer.append(item);
-                // });
+                    var item = $('<div>').addClass('carousel-item');
+                    if (index === 0) {
+                        item.addClass('active');
+                    }
+                    var img = $('<img>').addClass('d-block w-100').attr('src', data.photo[index]);
+                    item.append(img);
+                    imgContainer.append(item);
+                });
                 $('#title').text(data.title);
                 $('#alamat').append(`<i class="bi bi-pin-map-fill"> ` + data.alamat + `<i class="bi bi-chevron-right"></i>`);
                 $('#info-penting-content').append(data.info_penting);
