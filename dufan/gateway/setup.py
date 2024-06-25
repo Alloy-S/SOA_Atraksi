@@ -10,7 +10,7 @@ setup(
         "marshmallow==2.19.2",
         "nameko==v3.0.0-rc6",
         "mysqlclient==1.4.6",  # Added MySQL client
-        "jwt==1.3.1",
+        "pyjwt",
     ],
     extras_require={
         'dev': [

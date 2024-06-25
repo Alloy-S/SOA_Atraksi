@@ -81,6 +81,11 @@ $api_url = 'http://localhost:8000/api/atraksi';
             color: white;
             border-radius: 0px 0px 5px 5px;
         }
+
+        .btn-modal-paket a {
+            color: black;
+            font-size: 18px;
+        }
     </style>
 </head>
 
@@ -384,6 +389,8 @@ $api_url = 'http://localhost:8000/api/atraksi';
             </div>
         </div>
     </div>
+
+    <div id="modal-paket-container"></div>
 
     <!-- Modal highlight-->
     <div class="modal fade" id="highlight-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="highlightLabel" aria-hidden="true">
