@@ -51,8 +51,11 @@ CREATE TABLE `atraksis` (
 -- Dumping data for table `atraksis`
 --
 
+
+
+
 INSERT INTO `atraksis` (`id`, `title`, `slug`, `deskripsi`, `info_penting`, `highlight`, `alamat`, `provinsi`, `provinsi_name`, `kota`, `kota_name`, `negara`, `gps_location`, `lowest_price`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 'Sea World Ancol', 'Sea-World-Ancol', '<p>Sedang mencari destinasi wisata Jakarta yang cocok untuk seluruh keluarga? Ayo, segera kunjungi Sea World Ancol Jakarta sekarang!</p><br><p>SeaWorld Indonesia merupakan tempat wisata keluarga yang mengusung tema pendidikan, konservasi, dan hiburan. Di tempat ini, kamu akan disuguhkan dengan pemandangan hewan-hewan laut, seperti 7.300 ekor biota air tawar, reptil, dan vertebrata. Semua biota laut yang ada di SeaWorld ini dibagi ke dalam 28 display, yaitu 9 akuarium air tawar, 19 akuarium air laut, dan 4 kolam terbuka. </p><p><strong>Jam kunjungan</strong> <strong>KHUSUS di Pantai sepanjang kawasan Symphony of The Sea:</strong> </p><ul> <li>Kunjungan Sesi 1: 06.00-11.00 WIB</li> <li>Kunjungan Sesi 2: 11.00-16.00 WIB</li> <li>Kunjungan Sesi 3: 16.00-21.00 WIB </li> </ul><p>Pembatasan ini hanya berlaku di pantai sepanjang kawasan Symphony of The Sea sesuai tiket masuk pantai yang kamu pilih. Di luar jam kunjungan, kamu tetap dapat melakukan rekreasi sesuai jam operasional di Dunia Fantasi, Seaworld Ancol, Ocean Dream Samudra, Faunaland, Gondola, Allianz Ecopark, Pasar Seni, Pantai Indah, Pantai Festival, dan Restoran.</p><br>', '<ul> <li><strong>Tidak termasuk tiket masuk kendaraan motor/ mobil Pintu Gerbang Utama Ancol</strong>. Beli tiket masuk kendaraan Pintu Gerbang Utama Ancol di sini untuk pengalaman liburan yang tak terlupakan.</li> <li>Pengunjung dilarang membawa makanan dan minuman ke dalam area Sea World</li> <li>Loket tiket di lokasi akan ditutup 1 jam lebih awal dari jam operasional SeaWorld Ancol.</li> </ul>', '<ul> <li>Sea World Ancol merupakan atraksi akuarium di Jakarta yang memamerkan berbagai macam hewan-hewan laut.</li> <li>Lihat langsung hewan air laut yang menakjubkan di 28 display yang tersedia, yaitu 9 akuarium air tawar, 19 akuarium air laut, dan 4 kolam terbuka.</li> <li>Interaksi langsung dengan hewan laut yang jinak dan lucu di Touch Pool.</li> <li>Saksikan 2.000 ekor piranha menghabiskan makanannya di Beware Piranha.</li> <li>Cocok untuk: <strong>Keluarga Asyik.</strong></li> </ul>', 'Jl. Lodan Timur No.7, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430', '2', 'DKI jakarta', '155', 'Jakarta Utara', 'Indonesia', '-6.126478, 106.842963', 185000, 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53');
+(1, 'Trans Studio Cibubur', 'Trans-Studio-Cibubur', `<div id="section-description-pdp" class="RichText_description_preview__X9xZ4 SectionDescription_description_preview__bQyOL Text_text__DSnue"><p>Trans Studio Cibubur adalah indoor theme park berkelas dunia yang memiliki letak yang sangat strategis.</p> <br> <p>TSM Cibubur merupakan <a href="https://www.tiket.com/to-do/region/jawa-barat" title="tempat wisata di Jawa Barat">tempat wisata di Jawa Barat</a> yang menyuguhkan berbagai wahana dan atraksi yang sangat menarik, hingga wahana ekstrim yang didukung dengan kemajuan teknologi yang canggih dan berstandar internasional, sehingga menjadikan tempat ini menjadi pilihan destinasi wisata yang sangat cocok untuk menghabiskan waktu bersama dengan anak-anak, keluarga maupun orang terkasih.</p> <br> <p>Tak perlu khawatir Trans Studio Cibubur harga tiket masuknya sangat terjangkau dan kamu dapat menggunakan kartu kreditmu selama di sana!</p> <br></div>`, `<ul> <li><strong>PERHATIAN: Trans Studio Cibubur tutup untuk publik pada tanggal 29 Juni 2024 hingga pukul 13.00 WIB</strong></li> <li>Jam buka pada hari libur nasional sama dengan jam buka Sabtu &amp; Minggu.</li> </ul>`, `<ul> <li>Trans Studio Cibubur merupakan destinasi wisata keluarga untuk menikmati petualangan tak terlupakan.</li> <li>Bersenang-senanglah di taman hiburan indoor terbesar di Indonesia.</li> <li>Coba wahana 4D di Pacific Rim.</li> <li>Cetak foto keren kamu saat menaiki wahana.</li> <li>Cocok untuk: <strong>Keluarga Asyik </strong>dan <strong>Geng Asyik.</strong></li> </ul>`, `<span class="SectionLocation_full_address__11EQ8 Text_text__DSnue Text_size_b2__y3Q2E">Jl. Alternatif Cibubur No.230, Harjamukti, Kec. Cimanggis, Kota Depok, Jawa Barat 16454, Indonesia, Cimanggis, Depok, Jawa Barat, Indonesia</span>`, `9`, `Jawa Barat`, `====`, `Depok`, `Indonesia`, `-6.375269, 106.901801`, `250000`, `1`, `2024-06-25 13:19:10`, `2024-06-25 13:19:10`);
 
 -- --------------------------------------------------------
 
@@ -76,6 +79,11 @@ CREATE TABLE `etickets` (
 -- Dumping data for table `etickets`
 --
 
+INSERT INTO `etickets` (`id`, `booking_code`, `ticket_code`, `paket_id`, `jenis`, `valid_at`, `check_in`, `created_at`, `updated_at`) VALUES
+(1, 'JAAHD34', 'YVT58Y', 1, 'Regular', '2024-06-12', NULL, '2024-06-12 06:39:02', NULL),
+(2, 'JAAHD34', '4GSON2', 1, 'Regular', '2024-06-12', NULL, '2024-06-12 06:39:02', NULL),
+(3, 'JAAHD34', 'FYI8RH', 1, 'Regular', '2024-06-16', '2024-06-16 13:47:56', '2024-06-16 06:47:35', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -97,13 +105,13 @@ CREATE TABLE `jam_bukas` (
 --
 
 INSERT INTO `jam_bukas` (`id`, `atraksi_id`, `hari`, `waktu`, `is_open`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Senin', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(2, 1, 'Selasa', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(3, 1, 'Rabu', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(4, 1, 'Kamis', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(5, 1, 'Jumat', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(6, 1, 'Sabtu', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(7, 1, 'Minggu', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53');
+(1, 1, 'Senin', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(2, 1, 'Selasa', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(3, 1, 'Rabu', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(4, 1, 'Kamis', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(5, 1, 'Jumat', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(6, 1, 'Sabtu', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(7, 1, 'Minggu', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53');
 
 -- --------------------------------------------------------
 
@@ -132,8 +140,8 @@ CREATE TABLE `pakets` (
 --
 
 INSERT INTO `pakets` (`id`, `atraksi_id`, `type_id`, `title`, `deskripsi`, `fasilitas`, `cara_penukaran`, `syarat_dan_ketentuan`, `harga`, `kuota`, `is_refundable`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '(High Season) Reguler Sea World Bonus Jakarta Bird Land (belum termasuk tiket Ancol)', '<ul> <li>Anda akan mendapatkan 1 e-tiket Reguler Sea World dan 1 e-tiket Reguler Jakarta Bird Land yang dapat digunakan pada periode High Season berlaku untuk kunjungan pada tanggal yang dipilih antara tanggal 23 Juni – 7 Juli 2024</li> <li>Belum termasuk Tiket Masuk Gerbang Utama Ancol dan Tiket Masuk Kendaraan</li> </ul>', 'Hand Sanitizer, Toko Suvenir, Parkir, Restoran/Food Court, Mushola', '<ul> <li>Untuk mengakses e-tiket kamu, buka menu "Your Orders" pada aplikasi tiket.com.</li> <li>E-tiket tidak perlu dicetak. Cukup tunjukkan e-ticket dari smartphone kamu saat proses penukaran tiket atau di gerbang masuk (harus menunjukkan e-tiket langsung dari aplikasi tiket.com, bukan tangkapan layar). Pastikan untuk menyesuaikan kecerahan layar kamu.</li> <li>Harap tunjukkan kartu identitas yang masih berlaku saat proses penukaran tiket.</li> </ul>', '<p><strong>Umum</strong></p><ul> <li>Harga tiket sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat dikembalikan.</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari promotor atau tiket.com.</li> </ul><p><strong>E-voucher</strong></p><ul> <li>E-voucher tidak dapat diuangkan.</li> </ul><p><strong>Syarat dan Ketentuan Ancol</strong></p><ul> <li>Pengunjung dengan tinggi badan 80 cm ke atas akan dikenakan biaya tiket penuh. Pengunjung dengan tinggi badan di bawah 80 cm bisa masuk secara gratis.</li> <li>Tiket reguler = tiket 1 kali kunjungan, sedangkan Tiket Annual Pass = tiket member 1 tahun.</li> <li>Masing-masing kategori tiket hanya bisa digunakan pada kategori hari yang sudah ditentukan (misalnya, tiket <em>weekday </em>hanya berlaku di hari Senin - Jumat, tidak termasuk hari libur nasional). Mohon cek Detail masing-masing paket untuk informasi selengkapnya.</li> </ul>', 185000, 100, 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(2, 1, 1, '(High Season) Bundling Reguler Jakarta Bird Land + Sea World + Samudra (belum termasuk tiket Ancol)', '<ul> <li>Anda akan mendapatkan 1 e-tiket Reguler Sea World dan 1 e-tiket Reguler Jakarta Bird Land yang dapat digunakan pada periode High Season berlaku untuk kunjungan pada tanggal yang dipilih antara tanggal 23 Juni – 7 Juli 2024</li> <li>Belum termasuk Tiket Masuk Gerbang Utama Ancol dan Tiket Masuk Kendaraan</li> </ul>', 'Hand Sanitizer, Toko Suvenir, Parkir, Restoran/Food Court, Mushola', '<ul> <li>Untuk mengakses e-tiket kamu, buka menu "Your Orders" pada aplikasi tiket.com.</li> <li>E-tiket tidak perlu dicetak. Cukup tunjukkan e-ticket dari smartphone kamu saat proses penukaran tiket atau di gerbang masuk (harus menunjukkan e-tiket langsung dari aplikasi tiket.com, bukan tangkapan layar). Pastikan untuk menyesuaikan kecerahan layar kamu.</li> <li>Harap tunjukkan kartu identitas yang masih berlaku saat proses penukaran tiket.</li> </ul>', '<p><strong>Umum</strong></p><ul> <li>Harga tiket sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat dikembalikan.</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari promotor atau tiket.com.</li> </ul><p><strong>E-voucher</strong></p><ul> <li>E-voucher tidak dapat diuangkan.</li> </ul><p><strong>Syarat dan Ketentuan Ancol</strong></p><ul> <li>Pengunjung dengan tinggi badan 80 cm ke atas akan dikenakan biaya tiket penuh. Pengunjung dengan tinggi badan di bawah 80 cm bisa masuk secara gratis.</li> <li>Tiket reguler = tiket 1 kali kunjungan, sedangkan Tiket Annual Pass = tiket member 1 tahun.</li> <li>Masing-masing kategori tiket hanya bisa digunakan pada kategori hari yang sudah ditentukan (misalnya, tiket <em>weekday </em>hanya berlaku di hari Senin - Jumat, tidak termasuk hari libur nasional). Mohon cek Detail masing-masing paket untuk informasi selengkapnya.</li> </ul>', 250000, 100, 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53');
+(1, 1, 1, `Tiket Peak Season`, `<ul> <li>1 e-tiket berlaku untuk 1 orang.</li> </ul>`, `<ul class="SectionWhatsIncluded_item_wrapper__VFBPs"><li class="SectionWhatsIncluded_item__zBu_z Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E">Akses masuk ke Trans Studio Cibubur</li><li class="SectionWhatsIncluded_item__zBu_z Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E"> Akses gratis ke semua wahana (kecuali i-Fly)</li></ul>`, `<p>Bawa dan tunjukkan e-tiket ke staf yang bertugas di loket penukaran tiket untuk ditukarkan menjadi tiket asli.</p>`, `<ul> <li>Harga sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari Trans Studio Cibubur atau tiket.com.</li> </ul>`, 250000, 100, 1, `2024-06-25 16:40:51`, `2024-06-25 16:40:51`),
+(2, 1, 1, `<div data-testid="package-description" class="RichText_description_preview__X9xZ4 Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E"><p><strong>Validitas</strong></p> <ul> <li>1 e-tiket berlaku untuk 1 orang.</li> </ul> <br> <p><strong>Jam buka</strong></p> <ul> <li>Sabtu 11 Mei : 12.00 - 17.00</li> <li>Sabtu 18 Mei : 13.00 - 17.00</li> </ul></div>`, `<div data-testid="package-whats-included" class="SectionWhatsIncluded_content_list__BAWtj"><h6 title="Termasuk" class="Text_text__DSnue Text_size_b2__y3Q2E Text_weight_bold__m4BAY">Termasuk</h6><ul class="SectionWhatsIncluded_item_wrapper__VFBPs"><li class="SectionWhatsIncluded_item__zBu_z Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E">Akses masuk ke Trans Studio Cibubur</li><li class="SectionWhatsIncluded_item__zBu_z Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E"> Tiket i-Fly</li></ul></div>`, `<p>Bawa dan tunjukkan e-tiket ke staf yang bertugas di loket penukaran tiket untuk ditukarkan menjadi tiket asli.</p>`, `<div data-testid="package-tnc" class="RichText_description_preview__X9xZ4 Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E"><p><strong>Umum</strong></p> <ul> <li>Harga sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari Trans Studio Cibubur atau tiket.com.</li> </ul> <p><strong>E-tiket</strong></p> <ul> <li>E-tiket tidak dapat diuangkan.</li> </ul> <p><strong>Syarat dan Ketentuan di Lokasi</strong></p> <ul> <li>Makanan dan minuman dari luar tidak diperbolehkan.</li> <li>Hewan peliharaan, benda tajam, dan senjata api tidak diperbolehkan di dalam taman bermain.</li> <li>Ada minimal dan maksimal tinggi pengunjung untuk sejumlah wahana.</li> <li>Mohon diingat bahwa harga tiket berlaku untuk semua umur.</li> <li>Wahana I-FLY memerlukan biaya tambahan.</li> </ul></div>`, 450000, 100, 1, `2024-06-25 16:40:51`, `2024-06-25 16:40:51` );
 
 -- --------------------------------------------------------
 
@@ -155,9 +163,7 @@ CREATE TABLE `tgl_tutups` (
 
 INSERT INTO `tgl_tutups` (`id`, `atraksi_id`, `tgl`, `created_at`, `updated_at`) VALUES
 (1, 1, '2024-06-13', '2024-06-12 15:10:09', NULL),
-(2, 1, '2024-06-28', NULL, NULL),
-(2, 1, '2024-07-05', NULL, NULL),
-(2, 1, '2024-07-01', NULL, NULL);
+(2, 1, '2024-06-26', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -194,16 +200,14 @@ CREATE TABLE `photos` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
 --
 -- Dumping data for table `photos`
 --
 
 INSERT INTO `photos` (`id`, `atraksi_id`, `image`, `placeholder`, `created_at`, `updated_at`) VALUES
-(1, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2002053221267/Sea-World-Ancol-Tickets-07f2ff6b-6f07-46aa-a52d-1b43173ae69a.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'seaworld1', NULL, NULL),
-(2, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2002053221267/Sea-World-Ancol-Tickets-f2eb0440-ac29-49a1-8190-1829d769c30c.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'seaworld2', NULL, NULL),
-(3, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2002053221267/Sea-World-Ancol-Tickets-820fe4a4-d03a-4060-9540-c497c1874522.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'seaworld3', NULL, NULL);
-
+(1, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/4026947611151/Trans-Studio-Cibubur--12dadfe3-426e-4503-a7f8-aa3789158109.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'trans studio cibubur 1', NULL, NULL),
+(2, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/4026947611151/Trans-Studio-Cibubur--ef35435a-1c5a-4bca-b71c-b760f405c9ea.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'trans studio cibubur 2', NULL, NULL),
+(3, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/4026947611151/Trans-Studio-Cibubur--b9a30a26-b628-4866-9ddb-0212ba327835.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'trans studio cibubur 3', NULL, NULL);
 --
 -- Indexes for dumped tables
 --
@@ -294,7 +298,6 @@ ALTER TABLE `tgl_tutups`
 --
 ALTER TABLE `types`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 
 --
 -- AUTO_INCREMENT for table `photos`

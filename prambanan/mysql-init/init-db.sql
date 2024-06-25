@@ -51,8 +51,12 @@ CREATE TABLE `atraksis` (
 -- Dumping data for table `atraksis`
 --
 
+
+
 INSERT INTO `atraksis` (`id`, `title`, `slug`, `deskripsi`, `info_penting`, `highlight`, `alamat`, `provinsi`, `provinsi_name`, `kota`, `kota_name`, `negara`, `gps_location`, `lowest_price`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 'Sea World Ancol', 'Sea-World-Ancol', '<p>Sedang mencari destinasi wisata Jakarta yang cocok untuk seluruh keluarga? Ayo, segera kunjungi Sea World Ancol Jakarta sekarang!</p><br><p>SeaWorld Indonesia merupakan tempat wisata keluarga yang mengusung tema pendidikan, konservasi, dan hiburan. Di tempat ini, kamu akan disuguhkan dengan pemandangan hewan-hewan laut, seperti 7.300 ekor biota air tawar, reptil, dan vertebrata. Semua biota laut yang ada di SeaWorld ini dibagi ke dalam 28 display, yaitu 9 akuarium air tawar, 19 akuarium air laut, dan 4 kolam terbuka. </p><p><strong>Jam kunjungan</strong> <strong>KHUSUS di Pantai sepanjang kawasan Symphony of The Sea:</strong> </p><ul> <li>Kunjungan Sesi 1: 06.00-11.00 WIB</li> <li>Kunjungan Sesi 2: 11.00-16.00 WIB</li> <li>Kunjungan Sesi 3: 16.00-21.00 WIB </li> </ul><p>Pembatasan ini hanya berlaku di pantai sepanjang kawasan Symphony of The Sea sesuai tiket masuk pantai yang kamu pilih. Di luar jam kunjungan, kamu tetap dapat melakukan rekreasi sesuai jam operasional di Dunia Fantasi, Seaworld Ancol, Ocean Dream Samudra, Faunaland, Gondola, Allianz Ecopark, Pasar Seni, Pantai Indah, Pantai Festival, dan Restoran.</p><br>', '<ul> <li><strong>Tidak termasuk tiket masuk kendaraan motor/ mobil Pintu Gerbang Utama Ancol</strong>. Beli tiket masuk kendaraan Pintu Gerbang Utama Ancol di sini untuk pengalaman liburan yang tak terlupakan.</li> <li>Pengunjung dilarang membawa makanan dan minuman ke dalam area Sea World</li> <li>Loket tiket di lokasi akan ditutup 1 jam lebih awal dari jam operasional SeaWorld Ancol.</li> </ul>', '<ul> <li>Sea World Ancol merupakan atraksi akuarium di Jakarta yang memamerkan berbagai macam hewan-hewan laut.</li> <li>Lihat langsung hewan air laut yang menakjubkan di 28 display yang tersedia, yaitu 9 akuarium air tawar, 19 akuarium air laut, dan 4 kolam terbuka.</li> <li>Interaksi langsung dengan hewan laut yang jinak dan lucu di Touch Pool.</li> <li>Saksikan 2.000 ekor piranha menghabiskan makanannya di Beware Piranha.</li> <li>Cocok untuk: <strong>Keluarga Asyik.</strong></li> </ul>', 'Jl. Lodan Timur No.7, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430', '2', 'DKI jakarta', '155', 'Jakarta Utara', 'Indonesia', '-6.126478, 106.842963', 185000, 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53');
+(`1`, `Tiket Masuk Candi Prambanan`, `Tiket-Masuk-Candi-Prambanan`, `<div id="section-description-pdp" class="RichText_description_preview__X9xZ4 SectionDescription_description_preview__bQyOL Text_text__DSnue"><p>Candi Prambanan adalah destinasi wisata yang wajib dikunjungi saat liburan di Jogja. Nikmati petualangan jalan-jalan di Yogyakarta dengan mengunjungi berbagai tempat wisata hits bersama orang yang kamu cintai, keluarga, bersama pasangan, dan teman-temanmu.</p> <br> <p>Selama perjalanan, kamu akan mengunjungi beberapa tempat wisata di Jogja yang terkenal. Di Candi Prambanan, kamu akan disuguhkan kisah Roro Jonggrang yang memberikan tantangan bagi Bandung Bondowoso untuk membangun 1.000 candi dalam waktu 1 malam.</p> <br> <p>Eksplor beragam area di Candi Prambanan sambil menikmati sejarah dan budaya Indonesia.</p> <br></div>`, `<div class="RichText_description_preview__X9xZ4 SectionHighlight_rich_text__1TPtd Text_text__DSnue"><p><strong>Jadwal A Tale of Love and Wisdom Ramayana Ballet Prambanan</strong></p> <ul> <li>Indoor: 1,6,8,13,15,20,22,27,29</li> <li>Outdoor: 3,10,17,24,31</li> <li>Start pukul 20.30</li> </ul> <p><strong>Penting</strong></p> <ul> <li>Wajib mematuhi protokol kesehatan (CHSE).</li> <li>Pengunjung dapat mengunjungi Zona 1 Candi Prambanan sampai ke pelataran/halaman candi. Tidak diperbolehkan untuk memasuki bilik / menaiki bangunan candi.</li> <li>Setiap hari Senin, zona 1 (halaman candi) tutup untuk kunjungan. Tamu dapat mengunjungi zona 2 (taman-taman sekitar candi).</li> <li>Setiap Selasa-Minggu, pengunjung dapat berkunjung sampai ke Zona 1 (sampai ke halaman candi).</li> </ul> <p><strong>Jam Operasional</strong></p> <ul> <li>Jam Buka Pelataran Candi (Zona 1): 07.00-17.00 WIB</li> <li>Jam Operasional Candi Prambanan: 06.30 - 16.30 WIB</li> <li>Jam Buka Gate Parkir: 06.00-16.30 WIB</li> </ul></div>`, `<ul> <li>Candi Prambanan merupakan tempat untuk mempelajari cerita-cerita bersejarah. Dengan harga tiket Candi Prambanan Yogyakarta yang terjangkau, kamu sudah bisa memasuki kompleks candi.</li> <li>Tiket masuk Prambanan Jogja juga memberikanmu akses ke beberapa area di dalam kompleks.</li> <li>Cocok untuk: <strong>Keluarga Asyik </strong>dan <strong>Geng Asyik.</strong></li> </ul>`, `<span class="SectionLocation_full_address__11EQ8 Text_text__DSnue Text_size_b2__y3Q2E">Prambanan, Sleman, Provinsi Yogyakarta, Indonesia</span>`, `5`, `DI Yogyakarta`, `===`, `Sleman`, `Indonesia`, `-7.752021, 110.491467`, 50000, 1, '2024-06-25 13:58:21', `2024-06-25 13:58:21`);
+
+
 
 -- --------------------------------------------------------
 
@@ -76,6 +80,11 @@ CREATE TABLE `etickets` (
 -- Dumping data for table `etickets`
 --
 
+INSERT INTO `etickets` (`id`, `booking_code`, `ticket_code`, `paket_id`, `jenis`, `valid_at`, `check_in`, `created_at`, `updated_at`) VALUES
+(1, 'JAAHD34', 'YVT58Y', 1, 'Regular', '2024-06-12', NULL, '2024-06-12 06:39:02', NULL),
+(2, 'JAAHD34', '4GSON2', 1, 'Regular', '2024-06-12', NULL, '2024-06-12 06:39:02', NULL),
+(3, 'JAAHD34', 'FYI8RH', 1, 'Regular', '2024-06-16', '2024-06-16 13:47:56', '2024-06-16 06:47:35', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -97,13 +106,13 @@ CREATE TABLE `jam_bukas` (
 --
 
 INSERT INTO `jam_bukas` (`id`, `atraksi_id`, `hari`, `waktu`, `is_open`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Senin', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(2, 1, 'Selasa', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(3, 1, 'Rabu', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(4, 1, 'Kamis', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(5, 1, 'Jumat', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(6, 1, 'Sabtu', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(7, 1, 'Minggu', '09:00 - 16:30', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53');
+(1, 1, 'Senin', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(2, 1, 'Selasa', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(3, 1, 'Rabu', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(4, 1, 'Kamis', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(5, 1, 'Jumat', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(6, 1, 'Sabtu', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(7, 1, 'Minggu', '09:00 - 17:00', 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53');
 
 -- --------------------------------------------------------
 
@@ -132,8 +141,9 @@ CREATE TABLE `pakets` (
 --
 
 INSERT INTO `pakets` (`id`, `atraksi_id`, `type_id`, `title`, `deskripsi`, `fasilitas`, `cara_penukaran`, `syarat_dan_ketentuan`, `harga`, `kuota`, `is_refundable`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '(High Season) Reguler Sea World Bonus Jakarta Bird Land (belum termasuk tiket Ancol)', '<ul> <li>Anda akan mendapatkan 1 e-tiket Reguler Sea World dan 1 e-tiket Reguler Jakarta Bird Land yang dapat digunakan pada periode High Season berlaku untuk kunjungan pada tanggal yang dipilih antara tanggal 23 Juni – 7 Juli 2024</li> <li>Belum termasuk Tiket Masuk Gerbang Utama Ancol dan Tiket Masuk Kendaraan</li> </ul>', 'Hand Sanitizer, Toko Suvenir, Parkir, Restoran/Food Court, Mushola', '<ul> <li>Untuk mengakses e-tiket kamu, buka menu "Your Orders" pada aplikasi tiket.com.</li> <li>E-tiket tidak perlu dicetak. Cukup tunjukkan e-ticket dari smartphone kamu saat proses penukaran tiket atau di gerbang masuk (harus menunjukkan e-tiket langsung dari aplikasi tiket.com, bukan tangkapan layar). Pastikan untuk menyesuaikan kecerahan layar kamu.</li> <li>Harap tunjukkan kartu identitas yang masih berlaku saat proses penukaran tiket.</li> </ul>', '<p><strong>Umum</strong></p><ul> <li>Harga tiket sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat dikembalikan.</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari promotor atau tiket.com.</li> </ul><p><strong>E-voucher</strong></p><ul> <li>E-voucher tidak dapat diuangkan.</li> </ul><p><strong>Syarat dan Ketentuan Ancol</strong></p><ul> <li>Pengunjung dengan tinggi badan 80 cm ke atas akan dikenakan biaya tiket penuh. Pengunjung dengan tinggi badan di bawah 80 cm bisa masuk secara gratis.</li> <li>Tiket reguler = tiket 1 kali kunjungan, sedangkan Tiket Annual Pass = tiket member 1 tahun.</li> <li>Masing-masing kategori tiket hanya bisa digunakan pada kategori hari yang sudah ditentukan (misalnya, tiket <em>weekday </em>hanya berlaku di hari Senin - Jumat, tidak termasuk hari libur nasional). Mohon cek Detail masing-masing paket untuk informasi selengkapnya.</li> </ul>', 185000, 100, 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
-(2, 1, 1, '(High Season) Bundling Reguler Jakarta Bird Land + Sea World + Samudra (belum termasuk tiket Ancol)', '<ul> <li>Anda akan mendapatkan 1 e-tiket Reguler Sea World dan 1 e-tiket Reguler Jakarta Bird Land yang dapat digunakan pada periode High Season berlaku untuk kunjungan pada tanggal yang dipilih antara tanggal 23 Juni – 7 Juli 2024</li> <li>Belum termasuk Tiket Masuk Gerbang Utama Ancol dan Tiket Masuk Kendaraan</li> </ul>', 'Hand Sanitizer, Toko Suvenir, Parkir, Restoran/Food Court, Mushola', '<ul> <li>Untuk mengakses e-tiket kamu, buka menu "Your Orders" pada aplikasi tiket.com.</li> <li>E-tiket tidak perlu dicetak. Cukup tunjukkan e-ticket dari smartphone kamu saat proses penukaran tiket atau di gerbang masuk (harus menunjukkan e-tiket langsung dari aplikasi tiket.com, bukan tangkapan layar). Pastikan untuk menyesuaikan kecerahan layar kamu.</li> <li>Harap tunjukkan kartu identitas yang masih berlaku saat proses penukaran tiket.</li> </ul>', '<p><strong>Umum</strong></p><ul> <li>Harga tiket sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat dikembalikan.</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari promotor atau tiket.com.</li> </ul><p><strong>E-voucher</strong></p><ul> <li>E-voucher tidak dapat diuangkan.</li> </ul><p><strong>Syarat dan Ketentuan Ancol</strong></p><ul> <li>Pengunjung dengan tinggi badan 80 cm ke atas akan dikenakan biaya tiket penuh. Pengunjung dengan tinggi badan di bawah 80 cm bisa masuk secara gratis.</li> <li>Tiket reguler = tiket 1 kali kunjungan, sedangkan Tiket Annual Pass = tiket member 1 tahun.</li> <li>Masing-masing kategori tiket hanya bisa digunakan pada kategori hari yang sudah ditentukan (misalnya, tiket <em>weekday </em>hanya berlaku di hari Senin - Jumat, tidak termasuk hari libur nasional). Mohon cek Detail masing-masing paket untuk informasi selengkapnya.</li> </ul>', 250000, 100, 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53');
+(1, 1, 2, 'Tiket WNI', '<p>Berlaku untuk WNI (pemegang KTP/KITAS)</p>', `<li class="SectionWhatsIncluded_item__zBu_z Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E">Tiket Masuk</li>`, `<ul> <li>Tukarkan e-tiket dengan tiket asli langsung di <em>self-printing machine </em>Kiosk di lokasi.</li> <li>Cukup <em>scan </em>QR Code<strong> </strong>pada mesin dan cetak tiket aslinya.</li> </ul>`, `<div data-testid="package-tnc" class="RichText_description_preview__X9xZ4 Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E"><p><strong>Umum</strong></p> <ul> <li>Harga sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat dikembalikan (<em>non-refundable</em>).</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari promotor atau tiket.com.</li> <li>Pihak manajemen tidak bertanggung jawab atas kesalahan pembeli pada saat proses reservasi online.</li> </ul> <p><strong>E-tiket</strong></p> <ul> <li>E-tiket tidak dapat diuangkan.</li> </ul> <p><strong>Kategori Usia</strong></p> <ul> <li>Anak: 3-10 tahun</li> <li>Dewasa: 11 tahun ke atas</li> <li>Bayi tidak dikenakan biaya tiket (1-2 tahun).</li> </ul></div>`, 50000, 100, 1, `2024-06-25 16:23:21`, `2024-06-25 16:23:21`),
+
+(2, 1, 2, 'Tiket WNA', `<div data-testid="package-description" class="RichText_description_preview__X9xZ4 Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E"><p>Berlaku untuk WNA (pemegang paspor)</p></div>`, `<ul class="SectionWhatsIncluded_item_wrapper__VFBPs"><li class="SectionWhatsIncluded_item__zBu_z Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E">Tiket Masuk</li></ul>`, `<ul> <li>Tukarkan e-tiket dengan tiket asli langsung di <em>self-printing machine </em>Kiosk di lokasi.</li> <li>Cukup <em>scan </em>QR Code<strong> </strong>pada mesin dan cetak tiket aslinya.</li> </ul>`, `<div data-testid="package-tnc" class="RichText_description_preview__X9xZ4 Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E"><p><strong>Umum</strong></p> <ul> <li>Harga sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat dikembalikan (<em>non-refundable</em>).</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari promotor atau tiket.com.</li> <li>Pihak manajemen tidak bertanggung jawab atas kesalahan pembeli pada saat proses reservasi online.</li> </ul> <p><strong>E-tiket</strong></p> <ul> <li>E-tiket tidak dapat diuangkan.</li> </ul> <p><strong>Kategori Usia</strong></p> <ul> <li>Anak: 3-10 tahun</li> <li>Dewasa: 11 tahun ke atas</li> <li>Bayi tidak dikenakan biaya tiket (1-2 tahun).</li> </ul></div>`, 398750, 100, 1, `2024-06-25 16:28:41`, `2024-06-25 16:28:41`);
 
 -- --------------------------------------------------------
 
@@ -155,9 +165,7 @@ CREATE TABLE `tgl_tutups` (
 
 INSERT INTO `tgl_tutups` (`id`, `atraksi_id`, `tgl`, `created_at`, `updated_at`) VALUES
 (1, 1, '2024-06-13', '2024-06-12 15:10:09', NULL),
-(2, 1, '2024-06-28', NULL, NULL),
-(2, 1, '2024-07-05', NULL, NULL),
-(2, 1, '2024-07-01', NULL, NULL);
+(2, 1, '2024-06-26', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -180,6 +188,9 @@ INSERT INTO `types` (`id`, `created_at`, `updated_at`, `name`) VALUES
 (1, '2024-06-11 08:22:53', '2024-06-11 08:22:53', 'Regular'),
 (2, '2024-06-11 08:22:53', '2024-06-11 08:22:53', 'Fast Track');
 
+--
+-- Indexes for dumped tables
+--
 
 --
 -- Table structure for table `photos`
@@ -194,19 +205,14 @@ CREATE TABLE `photos` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
 --
 -- Dumping data for table `photos`
 --
 
 INSERT INTO `photos` (`id`, `atraksi_id`, `image`, `placeholder`, `created_at`, `updated_at`) VALUES
-(1, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2002053221267/Sea-World-Ancol-Tickets-07f2ff6b-6f07-46aa-a52d-1b43173ae69a.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'seaworld1', NULL, NULL),
-(2, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2002053221267/Sea-World-Ancol-Tickets-f2eb0440-ac29-49a1-8190-1829d769c30c.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'seaworld2', NULL, NULL),
-(3, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2002053221267/Sea-World-Ancol-Tickets-820fe4a4-d03a-4060-9540-c497c1874522.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'seaworld3', NULL, NULL);
-
---
--- Indexes for dumped tables
---
+(1, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001162996889/Tiket-Candi-Prambanan-2de95c9b-262e-4bb4-b74e-a3920cef3222.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'prambanan1', NULL, NULL),
+(2, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001162996889/Tiket-Candi-Prambanan-194e6a55-987b-485b-bd69-baae8d38fafa.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'prambanan2', NULL, NULL),
+(3, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001162996889/Tiket-Candi-Prambanan-4b113a62-847d-4f99-a2b3-f2fc8b3079b8.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'prambanan3', NULL, NULL);
 
 --
 -- Indexes for table `atraksis`
