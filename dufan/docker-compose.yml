@@ -40,6 +40,8 @@ services:
       RABBIT_USER: "guest"
       RABBIT_PASSWORD: "guest"
       RABBIT_MANAGEMENT_PORT: "15672"
+    volumes:
+      - ~/.aws:/root/.aws:ro # Mounting AWS credentials
 
   gateway:
     build: ./gateway

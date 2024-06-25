@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2024 at 09:17 AM
+-- Generation Time: Jun 25, 2024 at 06:37 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -52,22 +52,7 @@ CREATE TABLE `atraksis` (
 --
 
 INSERT INTO `atraksis` (`id`, `title`, `slug`, `deskripsi`, `info_penting`, `highlight`, `alamat`, `provinsi`, `provinsi_name`, `kota`, `kota_name`, `negara`, `gps_location`, `lowest_price`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 'Dufan', 'Dufan', 'Dufan', '<ul>\n                                <li>Tidak termasuk tiket masuk Pintu Gerbang Utama Ancol. Beli tiket Pintu Gerbang Utama Ancol di sini untuk pengalaman liburan yang tak terlupakan.</li>\n                                <li>Pengunjung dilarang membawa makanan dan minuman ke dalam area Dufan.</li>\n                                <li>Loket Dufan dan Pintu Gerbang Dunia Fantasi ditutup 1 jam lebih awal dari jam operasional yang berlaku.</li>\n                            </ul>', '<ul>\n                                <li>Dufan adalah wahana yang menghadirkan tempat bermain asyik yang terbagi menjadi empat kategori, yakni Children Rides, Family Ride, Water Ride, dan Thrill Ride.</li>\n                                <li>Bawa anak-anakmu ke wahana Dufan khusus anak, seperti Ontang-Anting yang riuh dan Istana Boneka yang penuh pesona.</li>\n                                <li>Sekaranglah waktunya untuk membuat kenangan berharga bersama keluarga dan teman-teman. Cek harga tiket Dufan 2024 di bawah, pilih tiketnya, dan nikmati petualangan yang seru!</li>\n                                <li>Cocok untuk: Keluarga Asyik, Bersama Pasangan, dan Geng Asyik.</li>\n                            </ul>', 'Jl. Lodan Timur No.7, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430', '2', 'Dufan', '2', 'Dufan', 'Indonesia', '-7.338611, 112.737592', 100000, 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bookings`
---
-
-CREATE TABLE `bookings` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `paket_id` bigint(20) UNSIGNED NOT NULL,
-  `tgl` date NOT NULL,
-  `jml_terjual` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(1, 'Dufan', 'Dufan', '<p>Mencari wahana bermain yang enggak jauh dari rumahmu? Yuk, lepas penatmu dengan bermain di Dufan Ancol. Banyak wahana asyik yang ada di Dufan dan terbagi menjadi empat kategori, yakni <em>Children Rides</em>, <em>Family Ride</em>, <em>Water Ride</em>, dan <em>Thrill Ride</em>. Cek harga tiket Dufan 2024 di tiket.com sekarang!</p><br><p>Di wahana <em>Children Rides</em>, anak-anak bisa bermain di atraksi Ontang-Anting. Permainan ini akan membawa anak-anak beterbangan di udara dengan kursi yang mereka duduki. Selain itu, anak-anak juga bisa mengunjungi wahana lainnya, seperti Istana Boneka, Bianglala, Perang Bintang, dan lainnya.</p><br><p>Buat kamu yang ingin memacu adrenalin, enggak ada salahnya mencoba wahana-wahana di <em>Thrill Ride</em>. Kamu bisa naik Roller Coaster untuk menikmati rasanya naik dan turun kereta dengan kecepatan tinggi sampai membuatmu berteriak. Wahana menantang lainnya yang bisa kamu coba adalah Baling-baling, Halilintar, Tornado, Istana Boneka, dan sebagainya.</p>', '<ul><li>Tidak termasuk tiket masuk Pintu Gerbang Utama Ancol (beli tiket di sini).</li><li>Pengunjung dilarang membawa makanan dan minuman ke dalam area Dufan.</li><li>Loket Dufan dan Pintu Gerbang Dunia Fantasi ditutup 1 jam lebih awal dari jam operasional yang berlaku.</li></ul>\n', '<ul><li>Dufan adalah wahana yang menghadirkan tempat bermain asyik yang terbagi menjadi empat kategori, yakni Children Rides, Family Ride, Water Ride, dan Thrill Ride.</li><li>Bawa anak-anakmu ke wahana Dufan khusus anak, seperti Ontang-Anting yang riuh dan Istana Boneka yang penuh pesona.</li><li>Sekaranglah waktunya untuk membuat kenangan berharga bersama keluarga dan teman-teman. Cek harga tiket Dufan 2024 di bawah, pilih tiketnya, dan nikmati petualangan yang seru!</li><li>Cocok untuk: Keluarga Asyik, Bersama Pasangan, dan Geng Asyik.</li></ul>', 'Jl. Lodan Timur No.7, Ancol, Kec. Pademangan, Jkt Utara, Daerah Khusus Ibukota Jakarta 14430', '2', 'DKI jakarta', '2', 'Jakarta Utara', 'Indonesia', '-7.338611, 112.737592', 100000, 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53');
 
 -- --------------------------------------------------------
 
@@ -152,22 +137,8 @@ CREATE TABLE `pakets` (
 --
 
 INSERT INTO `pakets` (`id`, `atraksi_id`, `type_id`, `title`, `deskripsi`, `fasilitas`, `cara_penukaran`, `syarat_dan_ketentuan`, `harga`, `kuota`, `is_refundable`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Full Day - Regular', 'asdfgadfgdfg', 'asdfgadfgdfg', 'asdfgadfgdfg', 'asdfgadfgdfg', 100000, 100, 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `photos`
---
-
-CREATE TABLE `photos` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `atraksi_id` bigint(20) UNSIGNED NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `placeholder` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(1, 1, 1, 'Full Day - Regular', 'paket full dar reguler', 'asdfgadfgdfg', 'Saat tiba di lokasi, langsung saja tunjukan QR Code-mu untuk di-scan. Pastikan untuk menyesuaikan kecerahan layar kamu.', '<p><strong>Umum</strong></p><ul> <li>Harga tiket sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari promotor atau tiket.com.</li> </ul><p><strong>E-voucher</strong></p><ul> <li>E-voucher tidak dapat diuangkan.</li> </ul><p><strong>Syarat dan Ketentuan Ancol</strong></p><ul> <li>Pengunjung dengan tinggi badan 100 cm ke atas akan dikenakan biaya tiket penuh. Pengunjung dengan tinggi badan di bawah 100 cm bisa masuk secara gratis.</li> <li>Tiket reguler = tiket 1 kali kunjungan, sedangkan Tiket Annual Pass = tiket member 1 tahun.</li> <li>Masing-masing kategori tiket hanya bisa digunakan pada kategori hari yang sudah ditentukan (misalnya, tiket <em>weekday </em>hanya berlaku di hari Senin - Jumat, tidak termasuk hari libur nasional). Mohon cek Detail masing-masing paket untuk informasi selengkapnya.</li> </ul>', 100000, 100, 1, '2024-06-11 08:22:53', '2024-06-11 08:22:53'),
+(2, 1, 2, 'Full Day - Fast Track', 'paket vip coy tanpa antri', 'asdfgadfgdfg', 'Saat tiba di lokasi, langsung saja tunjukan QR Code-mu untuk di-scan. Pastikan untuk menyesuaikan kecerahan layar kamu.', '<p><strong>Umum</strong></p><ul> <li>Harga tiket sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari promotor atau tiket.com.</li> </ul><p><strong>E-voucher</strong></p><ul> <li>E-voucher tidak dapat diuangkan.</li> </ul><p><strong>Syarat dan Ketentuan Ancol</strong></p><ul> <li>Pengunjung dengan tinggi badan 100 cm ke atas akan dikenakan biaya tiket penuh. Pengunjung dengan tinggi badan di bawah 100 cm bisa masuk secara gratis.</li> <li>Tiket reguler = tiket 1 kali kunjungan, sedangkan Tiket Annual Pass = tiket member 1 tahun.</li> <li>Masing-masing kategori tiket hanya bisa digunakan pada kategori hari yang sudah ditentukan (misalnya, tiket <em>weekday </em>hanya berlaku di hari Senin - Jumat, tidak termasuk hari libur nasional). Mohon cek Detail masing-masing paket untuk informasi selengkapnya.</li> </ul>', 200000, 100, 1, '2024-06-11 01:22:53', '2024-06-11 01:22:53');
 
 -- --------------------------------------------------------
 
@@ -188,7 +159,8 @@ CREATE TABLE `tgl_tutups` (
 --
 
 INSERT INTO `tgl_tutups` (`id`, `atraksi_id`, `tgl`, `created_at`, `updated_at`) VALUES
-(1, 1, '2024-06-13', '2024-06-12 15:10:09', NULL);
+(1, 1, '2024-06-13', '2024-06-12 15:10:09', NULL),
+(2, 1, '2024-06-26', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -223,12 +195,6 @@ ALTER TABLE `atraksis`
   ADD UNIQUE KEY `atraksis_slug_unique` (`slug`);
 
 --
--- Indexes for table `bookings`
---
-ALTER TABLE `bookings`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `etickets`
 --
 ALTER TABLE `etickets`
@@ -247,13 +213,6 @@ ALTER TABLE `jam_bukas`
 ALTER TABLE `pakets`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pakets_atraksi_id_foreign` (`atraksi_id`);
-
---
--- Indexes for table `photos`
---
-ALTER TABLE `photos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `photos_atraksi_id_foreign` (`atraksi_id`);
 
 --
 -- Indexes for table `tgl_tutups`
@@ -278,12 +237,6 @@ ALTER TABLE `atraksis`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `bookings`
---
-ALTER TABLE `bookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `etickets`
 --
 ALTER TABLE `etickets`
@@ -299,19 +252,13 @@ ALTER TABLE `jam_bukas`
 -- AUTO_INCREMENT for table `pakets`
 --
 ALTER TABLE `pakets`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `photos`
---
-ALTER TABLE `photos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tgl_tutups`
 --
 ALTER TABLE `tgl_tutups`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `types`
@@ -328,12 +275,6 @@ ALTER TABLE `types`
 --
 ALTER TABLE `pakets`
   ADD CONSTRAINT `pakets_atraksi_id_foreign` FOREIGN KEY (`atraksi_id`) REFERENCES `atraksis` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `photos`
---
-ALTER TABLE `photos`
-  ADD CONSTRAINT `photos_atraksi_id_foreign` FOREIGN KEY (`atraksi_id`) REFERENCES `atraksis` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
