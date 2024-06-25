@@ -39,7 +39,8 @@ $(document).ready(function () {
                     if (index === 0) {
                         item.addClass('active');
                     }
-                    var img = $('<img>').addClass('d-block w-100').attr('src', data.photo[index]);
+                    console.log(data.photo[index].image);
+                    var img = $('<img>').addClass('d-block w-100').attr('src', data.photo[index].image);
                     item.append(img);
                     imgContainer.append(item);
                 });
