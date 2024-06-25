@@ -153,7 +153,7 @@ CREATE TABLE `tgl_tutups` (
 
 INSERT INTO `tgl_tutups` (`id`, `atraksi_id`, `tgl`, `created_at`, `updated_at`) VALUES
 (1, 1, '2024-06-13', '2024-06-12 15:10:09', NULL),
-(2, 1, '2024-06-26', NULL, NULL)
+(2, 1, '2024-06-26', NULL, NULL);
 
 -- --------------------------------------------------------
 
