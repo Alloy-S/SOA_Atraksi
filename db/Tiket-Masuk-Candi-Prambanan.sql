@@ -193,6 +193,28 @@ INSERT INTO `types` (`id`, `created_at`, `updated_at`, `name`) VALUES
 --
 
 --
+-- Table structure for table `photos`
+--
+
+CREATE TABLE `photos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `atraksi_id` bigint(20) UNSIGNED NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `placeholder` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `photos`
+--
+
+INSERT INTO `photos` (`id`, `atraksi_id`, `image`, `placeholder`, `created_at`, `updated_at`) VALUES
+(1, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001162996889/Tiket-Candi-Prambanan-2de95c9b-262e-4bb4-b74e-a3920cef3222.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'prambanan1', NULL, NULL),
+(2, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001162996889/Tiket-Candi-Prambanan-194e6a55-987b-485b-bd69-baae8d38fafa.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'prambanan2', NULL, NULL),
+(3, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001162996889/Tiket-Candi-Prambanan-4b113a62-847d-4f99-a2b3-f2fc8b3079b8.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'prambanan3', NULL, NULL);
+
+--
 -- Indexes for table `atraksis`
 --
 ALTER TABLE `atraksis`
@@ -230,6 +252,14 @@ ALTER TABLE `tgl_tutups`
 --
 ALTER TABLE `types`
   ADD PRIMARY KEY (`id`);
+
+
+--
+-- Indexes for table `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `photos_atraksi_id_foreign` (`atraksi_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -270,6 +300,13 @@ ALTER TABLE `tgl_tutups`
 --
 ALTER TABLE `types`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+
+--
+-- AUTO_INCREMENT for table `photos`
+--
+ALTER TABLE `photos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

@@ -138,7 +138,8 @@ CREATE TABLE `pakets` (
 --
 
 INSERT INTO `pakets` (`id`, `atraksi_id`, `type_id`, `title`, `deskripsi`, `fasilitas`, `cara_penukaran`, `syarat_dan_ketentuan`, `harga`, `kuota`, `is_refundable`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'High Season Tiket', `<div data-testid="package-description" class="RichText_description_preview__X9xZ4 Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E"><p><strong>Jam Buka: </strong>09.00 - 16.00 WIB</p> <p><strong>Yang Akan Kamu Dapatkan:</strong></p> <ul> <li>Life vest</li> <li>Wi-Fi</li> <li>Akses ke seluruh wahana permainan</li> </ul> <p>Validitas</p> <ul> <li>Berlaku pada 15 Desember 2023 - 14 Januari 2024</li> <li>Berlaku sesuai dengan tanggal yang dipilih.</li> </ul></div>`, `<li class="SectionWhatsIncluded_item__zBu_z Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E">Akses Masuk</li>`, `<p>E-tiket tidak perlu dicetak. Cukup tunjukkan e-tiket dari smartphone kamu saat penukaran atau di pintu masuk. Mohon sesuaikan kecerahan layarmu.</p>`, `<div data-testid="package-tnc" class="RichText_description_preview__X9xZ4 Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E"><p><strong>Umum</strong></p> <ul> <li>Harga sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat dikembalikan (<em>non-refundable</em>).</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari promotor atau tiket.com.</li> </ul> <p><strong>E-tiket</strong></p> <ul> <li>E-tiket tidak dapat diuangkan.</li> </ul></div>`, 75100, 100, 0, `2024-06-25 16:50:21`, `2024-06-25 16:50:21`);
+(1, 1, 1, 'High Season Tiket', `<div data-testid="package-description" class="RichText_description_preview__X9xZ4 Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E"><p><strong>Jam Buka: </strong>09.00 - 16.00 WIB</p> <p><strong>Yang Akan Kamu Dapatkan:</strong></p> <ul> <li>Life vest</li> <li>Wi-Fi</li> <li>Akses ke seluruh wahana permainan</li> </ul> <p>Validitas</p> <ul> <li>Berlaku pada 15 Desember 2023 - 14 Januari 2024</li> <li>Berlaku sesuai dengan tanggal yang dipilih.</li> </ul></div>`, `<li class="SectionWhatsIncluded_item__zBu_z Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E">Akses Masuk</li>`, `<p>E-tiket tidak perlu dicetak. Cukup tunjukkan e-tiket dari smartphone kamu saat penukaran atau di pintu masuk. Mohon sesuaikan kecerahan layarmu.</p>`, `<div data-testid="package-tnc" class="RichText_description_preview__X9xZ4 Text_text__DSnue Text_variant_lowEmphasis__VihAq Text_size_b2__y3Q2E"><p><strong>Umum</strong></p> <ul> <li>Harga sudah termasuk pajak.</li> <li>Tiket yang sudah dibeli tidak dapat dikembalikan (<em>non-refundable</em>).</li> <li>Tiket yang sudah dibeli tidak dapat diganti jadwalnya</li> <li>Pembeli wajib mengisi data diri pribadi saat memesan.</li> <li>Penjualan tiket sewaktu-waktu dapat dihentikan atau dimulai oleh tiket.com sesuai dengan kebijakan dari promotor atau tiket.com.</li> </ul> <p><strong>E-tiket</strong></p> <ul> <li>E-tiket tidak dapat diuangkan.</li> </ul></div>`, 75100, 100, 0, `2024-06-25 16:50:21`, `2024-06-25 16:50:21`),
+
 
 -- --------------------------------------------------------
 
@@ -184,6 +185,27 @@ INSERT INTO `types` (`id`, `created_at`, `updated_at`, `name`) VALUES
 (2, '2024-06-11 08:22:53', '2024-06-11 08:22:53', 'Fast Track');
 
 --
+-- Table structure for table `photos`
+--
+
+CREATE TABLE `photos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `atraksi_id` bigint(20) UNSIGNED NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `placeholder` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `photos`
+--
+
+INSERT INTO `photos` (`id`, `atraksi_id`, `image`, `placeholder`, `created_at`, `updated_at`) VALUES
+(1, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001426513460/Waterboom-Jogja-97d83a58-6dc4-4966-804c-978feb04f773.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'waterboom jogja 1', NULL, NULL),
+(2, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001426513460/Waterboom-Jogja-f78f5bc1-f9b8-4b76-8c05-3225e0915f10.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'waterboom jogja 2', NULL, NULL),
+(2, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001426513460/Waterboom-Jogja-da5b7197-8ab7-4f86-865a-0fbaefe800b1.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'waterboom jogja 3', NULL, NULL);
+--
 -- Indexes for dumped tables
 --
 
@@ -227,6 +249,13 @@ ALTER TABLE `types`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `photos_atraksi_id_foreign` (`atraksi_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -265,6 +294,13 @@ ALTER TABLE `tgl_tutups`
 --
 ALTER TABLE `types`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+
+--
+-- AUTO_INCREMENT for table `photos`
+--
+ALTER TABLE `photos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

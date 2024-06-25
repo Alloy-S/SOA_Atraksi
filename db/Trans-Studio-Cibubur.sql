@@ -186,6 +186,28 @@ INSERT INTO `types` (`id`, `created_at`, `updated_at`, `name`) VALUES
 (1, '2024-06-11 08:22:53', '2024-06-11 08:22:53', 'Regular'),
 (2, '2024-06-11 08:22:53', '2024-06-11 08:22:53', 'Fast Track');
 
+
+--
+-- Table structure for table `photos`
+--
+
+CREATE TABLE `photos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `atraksi_id` bigint(20) UNSIGNED NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `placeholder` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `photos`
+--
+
+INSERT INTO `photos` (`id`, `atraksi_id`, `image`, `placeholder`, `created_at`, `updated_at`) VALUES
+(1, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/4026947611151/Trans-Studio-Cibubur--12dadfe3-426e-4503-a7f8-aa3789158109.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'trans studio cibubur 1', NULL, NULL),
+(2, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/4026947611151/Trans-Studio-Cibubur--ef35435a-1c5a-4bca-b71c-b760f405c9ea.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'trans studio cibubur 2', NULL, NULL),
+(3, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/4026947611151/Trans-Studio-Cibubur--b9a30a26-b628-4866-9ddb-0212ba327835.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'trans studio cibubur 3', NULL, NULL);
 --
 -- Indexes for dumped tables
 --
@@ -229,6 +251,14 @@ ALTER TABLE `tgl_tutups`
 ALTER TABLE `types`
   ADD PRIMARY KEY (`id`);
 
+
+--
+-- Indexes for table `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `photos_atraksi_id_foreign` (`atraksi_id`);
+
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -268,6 +298,12 @@ ALTER TABLE `tgl_tutups`
 --
 ALTER TABLE `types`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `photos`
+--
+ALTER TABLE `photos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
