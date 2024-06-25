@@ -184,6 +184,27 @@ INSERT INTO `types` (`id`, `created_at`, `updated_at`, `name`) VALUES
 (2, '2024-06-11 08:22:53', '2024-06-11 08:22:53', 'Fast Track');
 
 --
+-- Table structure for table `photos`
+--
+
+CREATE TABLE `photos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `atraksi_id` bigint(20) UNSIGNED NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `placeholder` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `photos`
+--
+
+INSERT INTO `photos` (`id`, `atraksi_id`, `image`, `placeholder`, `created_at`, `updated_at`) VALUES
+(5, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001186750067/Dufan-Ancol-Tickets-a813e980-43b7-4673-989b-f0831f0b14ff.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'dufan1', NULL, NULL),
+(6, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001186750067/Dufan-Ancol-Tickets-a8ee96d4-8d7a-468b-927d-8a698c87442a.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'dufan2', NULL, NULL);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -227,6 +248,13 @@ ALTER TABLE `types`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `photos_atraksi_id_foreign` (`atraksi_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -265,6 +293,12 @@ ALTER TABLE `tgl_tutups`
 --
 ALTER TABLE `types`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `photos`
+--
+ALTER TABLE `photos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
