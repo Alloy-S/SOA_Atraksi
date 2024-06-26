@@ -82,6 +82,63 @@ class DatabaseWrapper:
         cursor.close()
         return result
     
+    def get_booking_info(self, paket_id, tgl):
+        cursor = self.connection.cursor(dictionary=True)
+        sql = "SELECT id, paket_id, tgl, jml_terjual, kuota FROM bookings WHERE paket_id=%s AND tgl=%s"
+        cursor.execute(sql, (paket_id, tgl))
+        data = None
+        data = cursor.fetchone();
+        cursor.close()
+        return data
+    
+    def update_booking_paket(self, booking_id, tgl, jml):
+        cursor = self.connection.cursor(dictionary=True)
+        print(booking_id, tgl, jml)
+        try:
+            sql = "UPDATE bookings SET jml_terjual = %s WHERE id = %s;"
+            
+            cursor.execute(sql, [jml, booking_id])
+            self.connection.commit()
+            
+            if cursor.rowcount > 0:
+                response  = {
+                    'status': 'success'
+                }
+            else:
+                response  = {
+                    "status": "failed",
+                    "error": "booking gagal di update",
+                }
+        except Error as e:
+            self.connection.rollback()
+            response = {
+                'error': str(e)
+            }
+        
+        return response
+    
+    def create_booking_info(self, paket_id, jml_terjual, kuota, tgl):
+        cursor = self.connection.cursor(dictionary=True)
+        # created_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        # valid_at = tgl_booking
+        ticket_code = self.generate_random_string()
+        response = None
+        try:
+            sql = "INSERT INTO bookings (paket_id, tgl, jml_terjual, kuota) VALUES (%s, %s, %s, %s);"
+            # print(sql);
+            cursor.execute(sql, [paket_id, tgl, jml_terjual, kuota])
+            self.connection.commit()
+            
+            response = 'created'
+        except mysql.connector.Error as e:
+            
+            self.connection.rollback()
+            print(str(e))
+            response = 'gagal'
+            
+        return response
+        
+    
     def get_eticket_by_booking_code(self, booking_code):
         print('get eticket')
         cursor = self.connection.cursor(dictionary=True)
@@ -256,10 +313,10 @@ class Database(DependencyProvider):
                 pool_name="database_pool",
                 pool_size=10,
                 pool_reset_session=True,
-                host='mysql',
+                host='localhost',
                 database='atraksi_soa',
                 user='root',
-                password='password'
+                password=''
             )
         except Error as e :
             print ("Error while connecting to MySQL using Connection pool ", e)
