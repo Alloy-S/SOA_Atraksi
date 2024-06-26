@@ -114,7 +114,7 @@ class DatabaseWrapper:
             response = {
                 'error': str(e)
             }
-        
+        cursor.close()
         return response
     
     def create_booking_info(self, paket_id, jml_terjual, kuota, tgl):
@@ -135,7 +135,7 @@ class DatabaseWrapper:
             self.connection.rollback()
             print(str(e))
             response = 'gagal'
-            
+        cursor.close()
         return response
         
     
@@ -247,7 +247,7 @@ class DatabaseWrapper:
                 'code': 400,
                 'response': str(e)
             }
-            
+        cursor.close()    
         return response
     
     def get_eticket_detail(self,ticket_code):
@@ -281,7 +281,7 @@ class DatabaseWrapper:
             response = {
                 'error': str(e)
             }
-        
+        cursor.close()
         return response
         
     def delete_eticket(self, ticket_code):
