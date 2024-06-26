@@ -210,6 +210,20 @@ INSERT INTO `photos` (`id`, `atraksi_id`, `image`, `placeholder`, `created_at`, 
 (1, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/4026947611151/Trans-Studio-Cibubur--12dadfe3-426e-4503-a7f8-aa3789158109.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'trans studio cibubur 1', NULL, NULL),
 (2, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/4026947611151/Trans-Studio-Cibubur--ef35435a-1c5a-4bca-b71c-b760f405c9ea.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'trans studio cibubur 2', NULL, NULL),
 (3, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/4026947611151/Trans-Studio-Cibubur--b9a30a26-b628-4866-9ddb-0212ba327835.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'trans studio cibubur 3', NULL, NULL);
+
+--
+-- Table structure for table `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `paket_id` bigint(20) UNSIGNED NOT NULL,
+  `tgl` date NOT NULL,
+  `jml_terjual` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `kuota` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 --
 -- Indexes for dumped tables
 --
@@ -261,6 +275,9 @@ ALTER TABLE `photos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `photos_atraksi_id_foreign` (`atraksi_id`);
 
+
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`id`);
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -307,6 +324,12 @@ ALTER TABLE `types`
 ALTER TABLE `photos`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
+--
+-- AUTO_INCREMENT for table `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+COMMIT;
 --
 -- Constraints for dumped tables
 --

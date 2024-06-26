@@ -44,6 +44,7 @@ class RoomService:
     
     @rpc
     def eticket_detail(self, booking_code):
+        # print(booking_code)
         etickets = self.database.get_eticket_by_booking_code(booking_code)
         return etickets
     
@@ -65,14 +66,18 @@ class RoomService:
         
         if booking_date < datetime.now().date():
             return {"error": "Booking date cannot be in the past."}
-        
-        paket = self.database.get_atraksi_paket_id(paket_id)
-        type_ticket = self.database.get_ticket_type_id(paket['type_id'])
-        data = []
+        hasil = self.update_booking_paket(paket_id, jml_ticket, tgl_booking)
+        print(hasil)
+        if hasil['status'] == "success":
+            paket = self.database.get_atraksi_paket_id(paket_id)
+            type_ticket = self.database.get_ticket_type_id(paket['type_id'])
+            data = []
 
-        for i in range(int(jml_ticket)):
-            data.append(self.database.create_eticket(paket_id, jml_ticket, booking_code, type_ticket, tgl_booking))
-        return data
+            for i in range(int(jml_ticket)):
+                data.append(self.database.create_eticket(paket_id, jml_ticket, booking_code, type_ticket, tgl_booking))
+            return data
+        else:
+            return hasil
     
     @rpc
     def check_in(self, ticket_code):
@@ -101,4 +106,63 @@ class RoomService:
             "status": "Gagal dihapus"
             }     
         return response
-
+    
+    @rpc
+    def check_avail_paket(self, paket_id, tgl):
+        result = self.database.get_booking_info(paket_id, tgl)
+        data = self.database.get_atraksi_paket_id(paket_id)
+        
+        
+        if result == None:
+            if data != None:
+                kuota = data['kuota'];
+                return {
+                    'status': 'tersedia',
+                    'kuota': kuota,
+                    'tgl': tgl,
+                }
+            # return {'status': result}
+        else:
+            kuota = result['kuota'] - result['jml_terjual']
+            if kuota > 0:
+                return {
+                    'status': 'tersedia',
+                    'kuota': kuota,
+                    'tgl' : tgl,
+                }
+            else:
+                return {
+                    'status': 'tidak tersedia',
+                    'kuota': kuota,
+                    'tgl' : tgl,
+                }
+        # paket = self.database.get_atraksi_paket_id(paket_id)
+        
+    
+    def update_booking_paket(self, paket_id, jml, tgl):
+        result = self.database.get_booking_info(paket_id, tgl)
+        data = self.database.get_atraksi_paket_id(paket_id)
+        
+        if result == None:
+            hasil = self.database.create_booking_info(paket_id, jml, data['kuota'], tgl)
+            if hasil == 'gagal':
+                return {
+                    "status": "failed",
+                    "response": "booking gagal dibuat",
+                }
+            else:
+                return {
+                    "status": "success",
+                }
+                
+        else:
+            newJml = result['jml_terjual'] + jml
+            if newJml <= result['kuota']:
+                hasil = self.database.update_booking_paket(result['id'], tgl, newJml)
+                return hasil
+            else:
+                return {
+                    "status": "failed",
+                    "error": "kuota habis"
+                }
+                

@@ -1,6 +1,6 @@
 from nameko.rpc import rpc
 
-import dependencies
+from atraksi import dependencies
 import json
 from datetime import datetime
 

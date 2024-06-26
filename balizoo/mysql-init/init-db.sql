@@ -212,6 +212,20 @@ INSERT INTO `photos` (`id`, `atraksi_id`, `image`, `placeholder`, `created_at`, 
 (2, 1, 'https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/rsfit1440960gsm/events/2020/12/22/00036252-bce1-4bee-9d28-96bb5f51045f-1608649123618-b476b6b49600fc7a2a0c7ea46a18e38b.jpg', 'bali-zoo2', NULL, NULL),
 (3, 1, 'https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/rsfit1440960gsm/events/2020/11/22/9ad705cb-8205-41cb-a2f6-3bcf3b7132e8-1606018664584-784a8c78aeb605431e3968512489b676.jpg', 'bali-zoo3', NULL, NULL);
 
+
+--
+-- Table structure for table `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `paket_id` bigint(20) UNSIGNED NOT NULL,
+  `tgl` date NOT NULL,
+  `jml_terjual` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `kuota` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 --
 -- Indexes for dumped tables
 --
@@ -262,6 +276,9 @@ ALTER TABLE `photos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `photos_atraksi_id_foreign` (`atraksi_id`);
 
+
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`id`);
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -308,6 +325,13 @@ ALTER TABLE `types`
 ALTER TABLE `photos`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
+
+--
+-- AUTO_INCREMENT for table `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+COMMIT;
 --
 -- Constraints for dumped tables
 --
