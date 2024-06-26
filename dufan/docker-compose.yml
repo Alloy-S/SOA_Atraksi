@@ -58,6 +58,6 @@ services:
       RABBIT_PASSWORD: "guest"
       RABBIT_MANAGEMENT_PORT: "15672"
   
-volume:
+volumes:
   mysql_data:
     driver: local
