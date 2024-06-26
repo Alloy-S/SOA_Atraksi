@@ -314,7 +314,7 @@ class Database(DependencyProvider):
                 pool_size=10,
                 pool_reset_session=True,
                 host='mysql',
-                database='atraksi_soa',
+                database='transstudio',
                 user='root',
                 password='password'
             )
