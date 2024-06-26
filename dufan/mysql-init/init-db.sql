@@ -198,6 +198,20 @@ INSERT INTO `photos` (`id`, `atraksi_id`, `image`, `placeholder`, `created_at`, 
 (6, 1, 'https://ik.imagekit.io/tvlk/xpe-asset/AyJ40ZAo1DOyPyKLZ9c3RGQHTP2oT4ZXW+QmPVVkFQiXFSv42UaHGzSmaSzQ8DO5QIbWPZuF+VkYVRk6gh-Vg4ECbfuQRQ4pHjWJ5Rmbtkk=/2001186750067/Dufan-Ancol-Tickets-a8ee96d4-8d7a-468b-927d-8a698c87442a.jpeg?_src=imagekit&tr=c-at_max,h-750,q-100,w-1000', 'dufan2', NULL, NULL);
 
 --
+-- Table structure for table `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `paket_id` bigint(20) UNSIGNED NOT NULL,
+  `tgl` date NOT NULL,
+  `jml_terjual` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `kuota` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
 -- Indexes for dumped tables
 --
 
@@ -248,6 +262,11 @@ ALTER TABLE `photos`
   ADD KEY `photos_atraksi_id_foreign` (`atraksi_id`);
 
 --
+-- Indexes for table `bookings`
+--
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`id`);
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -293,6 +312,12 @@ ALTER TABLE `types`
 ALTER TABLE `photos`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
+--
+-- AUTO_INCREMENT for table `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+COMMIT;
 --
 -- Constraints for dumped tables
 --
