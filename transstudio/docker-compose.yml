@@ -5,36 +5,36 @@ services:
     container_name: transstudio-service
     image: rabbitmq:3.7-management
     ports:
-      - "15673:15672" # Exposing RabbitMQ web management on different port for convenience
+      - "15674:15672" # Exposing RabbitMQ web management on different port for convenience
     restart: always
 
   mysql:
     container_name: transstudio-mysql
     image: mysql:5.7
     ports:
-      - "3307:3306" # Exposing MySQL on different port for convenience
+      - "3309:3306" # Exposing MySQL on different port for convenience
     environment:
-      MYSQL_DATABASE: "atraksi_soa"
+      MYSQL_DATABASE: "transstudio"
       MYSQL_ROOT_PASSWORD: "password"
     volumes:
      - ./mysql-init:/docker-entrypoint-initdb.d
     restart: always
 
-  aktraksi:
+  atraksi:
     build: ./atraksi
-    container_name: atraksi-service
+    container_name: trans-atraksi-service
     depends_on:
       - rabbit
       - mysql
     ports:
-      - "8002:8000"
+      - "8005:8000"
     links:
       - "rabbit:transstudio-service"
       - "mysql:transstudio-mysql"
     environment:
       MYSQL_PASSWORD: "password"
       MYSQL_HOST: "mysql"
-      MYSQL_DB: "atraksi_soa"
+      MYSQL_DB: "transstudio"
       RABBIT_HOST: "rabbit"
       RABBIT_PORT: "5672"
       RABBIT_USER: "guest"
@@ -43,11 +43,11 @@ services:
 
   gateway:
     build: ./gateway
-    container_name: gateway-service
+    container_name: trans-gateway-service
     depends_on:
       - rabbit
     ports:
-      - "8003:8000"
+      - "8007:8000"
     links:
       - "rabbit:transstudio-service"
     environment:
