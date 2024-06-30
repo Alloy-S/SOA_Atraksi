@@ -1,19 +1,3 @@
-<?php
-
-
-$api_url = 'http://localhost:8000/api/atraksi';
-
-// Read JSON file
-// $json_data = file_get_contents($api_url);
-
-// // Decode JSON data into PHP array
-// $response_data = json_decode($json_data);
-
-// echo json_encode($response_data);
-// die;
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 

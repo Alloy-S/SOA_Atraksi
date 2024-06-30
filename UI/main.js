@@ -115,26 +115,52 @@ $(document).ready(function () {
                         type: 'GET',
                         success: function (data) {
                             data = JSON.parse(data);
+                            console.log("ajshdjka")
                             console.log(data.paket);
                             $('#paket-loader').hide();
-                            data.paket.forEach((element, index) => {
-                                // $('#paket-container').append(createCard(element, status));
-                                $.ajax({
-                                    url: `http://${address}/api/atraksi/paket/${element.paket_id}/check/${dateText}`,
-                                    type: 'GET',
-                                    success: function (data) {
-                                        data = JSON.parse(data);
-                                        console.log(data);
-                                        if (data.status == 'tersedia') {
-                                            $('#paket-container').append(createCard(element, 'Buka'));
-                                        } else {
-                                            $('#paket-container').append(createCard(element, 'Tutup'));
-                                        }
+                            if (status == "Buka") {
+                                data.paket.forEach((element, index) => {
+                                    // $('#paket-container').append(createCard(element, status));
+                                    $.ajax({
+                                        url: `http://${address}/api/atraksi/paket/${element.paket_id}/check/${dateText}`,
+                                        type: 'GET',
+                                        success: function (data) {
+                                            data = JSON.parse(data);
+                                            console.log(data);
+                                            if (data.status == 'tersedia') {
 
-                                    }
-                                });
-                                $('#modal-paket-container').append(createModal(element));
-                            })
+                                                $('#paket-container').append(createCard(element, 'Buka'));
+                                            } else {
+                                                $('#paket-container').append(createCard(element, 'Tutup'));
+                                            }
+
+                                        }
+                                    });
+                                    $('#modal-paket-container').append(createModal(element));
+                                })
+                            } else {
+                                
+                                data.paket.forEach((element, index) => {
+                                    $('#paket-container').append(createCard(element, 'Tutup'));
+                                    // $('#paket-container').append(createCard(element, status));
+                                    // $.ajax({
+                                    //     url: `http://${address}/api/atraksi/paket/${element.paket_id}/check/${dateText}`,
+                                    //     type: 'GET',
+                                    //     success: function (data) {
+                                    //         data = JSON.parse(data);
+                                    //         console.log(data);
+                                    //         if (data.status == 'tersedia') {
+
+                                    //             $('#paket-container').append(createCard(element, 'Buka'));
+                                    //         } else {
+                                                
+                                    //         }
+
+                                    //     }
+                                    // });
+                                    $('#modal-paket-container').append(createModal(element));
+                                })
+                            }
                         }
                     })
                 }
@@ -273,7 +299,6 @@ $(document).ready(function () {
             <div class="card mt-3">
                 <div class="card-body">
                     <h5 class="card-title">${pkg.title}</h5>
-                    <p class="card-text">${pkg.deskripsi}</p>
                     <a href="" class="card-link text-decoration-none fw-bolder text-primary" type="button" data-bs-toggle="modal" data-bs-target="#paket-modal-${pkg.paket_id}">detail</a>
                     <hr>
                     <div class="d-flex justify-content-between">
@@ -288,7 +313,6 @@ $(document).ready(function () {
             <div class="card mt-3">
                 <div class="card-body unavail">
                     <h5 class="card-title">${pkg.title}</h5>
-                    <p class="card-text">${pkg.deskripsi}</p>
                     <a href="" class="card-link text-decoration-none fw-bolder text-primary" type="button" data-bs-toggle="modal" data-bs-target="#paket-modal-${pkg.paket_id}">detail</a>
                     <hr>
                     <div class="d-flex justify-content-between">
